@@ -106,10 +106,10 @@ export const loginAsGuest = () => {
 
 export const forgotPasswordNotification = () => {
     return (dispatch: any) => {
-        const contactEmail = 'ezampino@uw.edu';
+        const contactEmail = 'luke.rasmussen@northwestern.edu';
         const info: InformationModalState = {
-            header: 'Forgot Password',
-            body: `Please contact the administrator at ${contactEmail} to retrieve your password.`,
+            header: 'Forgot Entry Code',
+            body: `Please contact the administrator at ${contactEmail} to retrieve your entry code.`,
             show: true
         };
         dispatch(showInfoModal(info));

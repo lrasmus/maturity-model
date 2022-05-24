@@ -68,7 +68,7 @@ export default class LoginBox extends React.PureComponent<Props,State> {
                     />
 
                     {/* Entry code */}
-                    <Label for="entry-code">Password</Label>
+                    <Label for="entry-code">Entry Code</Label>
                     <Input 
                         autoComplete="off"
                         className={entryCodeClasses.join(' ')} 
@@ -77,13 +77,13 @@ export default class LoginBox extends React.PureComponent<Props,State> {
                         onChange={this.handleEntryCodeChange}
                         onKeyPress={this.handleKeypress}
                         placeholder={entryCodePlaceholder}
-                        type="text" 
+                        type="password" 
                         value={loginState.entryCode} 
                     />
                     <FiLock className="lock" />
 
                     {/* Forgot Password */}
-                    <div className={`${c}-forgot`} onClick={this.handleForgotPasswordClick}>Forgot Password?</div>
+                    <div className={`${c}-forgot`} onClick={this.handleForgotPasswordClick}>Forgot Entry Code?</div>
                 </FormGroup>
 
                 {/* Sign in */}

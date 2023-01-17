@@ -24,15 +24,6 @@ export default class Sidebar extends React.PureComponent<Props> {
 
         return (
             <div className={c}>
-
-                {/* CD2H logo */}
-                <a href="https://ctsa.ncats.nih.gov/cd2h/" target="_">
-                    <div className={`${c}-cd2h-link`} />
-                </a>
-                <div className={`${c}-cd2h-logo-container`}>
-                    <img alt="cd2h-logo" className={`${c}-cd2h-logo`} src={process.env.PUBLIC_URL + 'cd2h-logo.png'} />
-                </div>
-
                 {/* Home */}
                 <div 
                     className={`${c}-option ${c}-option-home ${currentView === AppView.ModelSelection || currentView === AppView.Greeting ? 'selected' : ''}`} 

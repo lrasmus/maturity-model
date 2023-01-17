@@ -32,9 +32,6 @@ export class Login extends React.PureComponent<Props> {
                     </Col>
                     <Col className={`${c}-col ${c}-col-right`}>
                         <div className={`${c}-col-right-container`}>
-                            <div className="cd2h-logo-wrapper">
-                                <img className="cd2h-logo" src={process.env.PUBLIC_URL + '/cd2h-logo.png'} alt="cd2h logo" />
-                            </div>
                             {!loginState.newUser
                                 ? <LoginBox dispatch={dispatch} infoState={generalState.informationModal} loginState={loginState} />
                                 : <SignUp dispatch={dispatch} infoState={generalState.informationModal} loginState={loginState} />

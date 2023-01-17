@@ -11,11 +11,6 @@ export default class InfoBox extends React.PureComponent<Props> {
             <div className={c}>
                 <div className={`${c}-header`}>Welcome to the Maturity Model Survey</div>
                 <p>
-                    <a href="https://cd2h.org/" target="_">
-                        Learn more about the CD2H
-                    </a>
-                </p>
-                <p>
                     <a href="https://ctsa.ncats.nih.gov/cd2h/informatics-maturity-and-best-practices-core/" target="_">
                         Learn more about informatics maturity and best practices
                     </a>

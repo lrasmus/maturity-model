@@ -7,9 +7,11 @@ import { UserState } from '../model/UserState';
 import { ModelsState } from '../model/ModelsState';
 import { LoginState } from '../model/LoginState';
 import { GeneralState } from '../model/GeneralState';
+import { AppConfigState, AppConfigLoadState } from '../model/AppConfigState';
+import { getAppConfig } from '../actions/appConfig';
 
 interface OwnProps {
-    
+
 }
 interface DispatchProps {
     dispatch: any;
@@ -19,20 +21,24 @@ interface StateProps {
     login: LoginState;
     models: ModelsState;
     user: UserState;
+    appConfig: AppConfigState;
 }
 
 type Props = StateProps & DispatchProps & OwnProps;
 
 class App extends React.PureComponent<Props> {
-
     public render() {
-        const { dispatch, general, login, models, user } = this.props;
+        const { dispatch, general, login, models, user, appConfig } = this.props;
+
+        if (appConfig && appConfig.loadState === AppConfigLoadState.NotLoaded) {
+            dispatch(getAppConfig());
+        }
 
         /*
          * Show login if not logged in yet.
          */
         if (!login.loggedIn) {
-            return <Login dispatch={dispatch} generalState={general} loginState={login} />;
+            return <Login dispatch={dispatch} generalState={general} loginState={login} appConfigState={appConfig} />;
         }
         /*
          * Else show the main screen.
@@ -46,7 +52,8 @@ const mapStateToProps = (state: AppState) => {
         general: state.general,
         login: state.login,
         models: state.models,
-        user: state.user
+        user: state.user,
+        appConfig: state.appConfig
     };
 };
 

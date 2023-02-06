@@ -2,6 +2,7 @@ import React from 'react';
 import { Form, FormGroup, Label, Input } from 'reactstrap';
 import { FiLock, FiChevronRight } from 'react-icons/fi';
 import { InformationModalState } from '../../model/GeneralState';
+import { AppConfigState } from '../../model/AppConfigState';
 import { LoginState, LoginServerCommunicationState } from '../../model/LoginState';
 import { loginSetEntryCode, attemptLogin, isNewUser, loginSetEmail, loginAsGuest, forgotPasswordNotification } from '../../actions/login';
 import InformationModal from '../../components/Modals/InformationModal/InformationModal';
@@ -10,6 +11,7 @@ interface Props {
     dispatch: any;
     infoState: InformationModalState;
     loginState: LoginState;
+    appConfigState: AppConfigState;
 }
 
 interface State {
@@ -28,7 +30,7 @@ export default class LoginBox extends React.PureComponent<Props,State> {
 
     public render() {
         const c = 'loginbox';
-        const { dispatch, infoState, loginState } = this.props;
+        const { dispatch, infoState, loginState, appConfigState } = this.props;
         const { entryCodeValid, emailValid } = this.state;
         const classes = [ c, (loginState.serverCommunication === LoginServerCommunicationState.Failed ? 'invalid' : '') ];
         const buttonClasses = [ `${c}-button`, (loginState.serverCommunication === LoginServerCommunicationState.Calling ? 'calling' : '') ];
@@ -36,6 +38,9 @@ export default class LoginBox extends React.PureComponent<Props,State> {
         const entryCodeClasses = [ 'leaf-input' ];
         let entryCodePlaceholder = '';
         let emailPlaceholder = ''
+        let guestPlaceholder = null;
+        let signupPlaceholder = null;
+        let orPlaceholder = null;
 
         if (!emailValid) {
             emailClasses.push('error');
@@ -45,6 +50,32 @@ export default class LoginBox extends React.PureComponent<Props,State> {
         if (!entryCodeValid) {
             entryCodeClasses.push('error');
             entryCodePlaceholder = 'Enter Survey Entry Code';
+        }
+
+        if (appConfigState && appConfigState.allowGuest) {
+            guestPlaceholder = (
+                <div className={`${c}-button ${c}-button-guest`} tabIndex={3} onClick={this.handleGuestLoginClick}>
+                    Sign in as Guest
+                    <FiChevronRight className="icon chevron" />
+                </div>
+            );
+        }
+
+        if (appConfigState && appConfigState.allowSignup) {
+            signupPlaceholder = (
+                <div className={`${c}-button ${c}-button-signup`} tabIndex={4} onClick={this.handleSignUpClick}>
+                    Sign Up
+                    <FiChevronRight className="icon chevron" />
+                </div>
+            );
+        }
+
+        if (guestPlaceholder || signupPlaceholder) {
+            orPlaceholder = (
+                <div className={`${c}-or`}>
+                    <div className={`${c}-or-inner`}>or</div>
+                </div>
+            );
         }
 
         return (
@@ -91,30 +122,17 @@ export default class LoginBox extends React.PureComponent<Props,State> {
                     {this.getSignInContent()}
                 </div>
 
-                {/* -or- */}
-                <div className={`${c}-or`}>
-                    <div className={`${c}-or-inner`}>or</div>
-                </div>
-
-                {/* Sign in as Guest */}
-                <div className={`${c}-button ${c}-button-guest`} tabIndex={3} onClick={this.handleGuestLoginClick}>
-                    Sign in as Guest
-                    <FiChevronRight className="icon chevron" />
-                </div>
-
-                {/* Sign Up */}
-                <div className={`${c}-button ${c}-button-signup`} tabIndex={4} onClick={this.handleSignUpClick}>
-                    Sign Up
-                    <FiChevronRight className="icon chevron" />
-                </div>
+                {orPlaceholder}
+                {guestPlaceholder}
+                {signupPlaceholder}
 
             </Form>
         );
     }
 
     private handleForgotPasswordClick = () => {
-        const { dispatch } = this.props;
-        dispatch(forgotPasswordNotification());
+        const { dispatch, appConfigState } = this.props;
+        dispatch(forgotPasswordNotification(appConfigState.admin));
     };
 
     private handleLoginButtonClick = () => {

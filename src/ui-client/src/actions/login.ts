@@ -104,9 +104,8 @@ export const loginAsGuest = () => {
     };
 };
 
-export const forgotPasswordNotification = () => {
+export const forgotPasswordNotification = (contactEmail: string) => {
     return (dispatch: any) => {
-        const contactEmail = 'luke.rasmussen@northwestern.edu';
         const info: InformationModalState = {
             header: 'Forgot Entry Code',
             body: `Please contact the administrator at ${contactEmail} to retrieve your entry code.`,

@@ -5,6 +5,7 @@ from datetime import datetime
 from .fields import ENTRY_CODE, EMAIL_ADDRESS, FNAME, LNAME, RECORD_ID, APPROVED
 from .aggregator import aggregate
 from .services.redcapApi import REDCapHttpConnector
+from .services.appConfig import AppConfig
 
 hidden = [ RECORD_ID, ENTRY_CODE, EMAIL_ADDRESS, APPROVED ]
 unalterable = [ ENTRY_CODE, EMAIL_ADDRESS, FNAME, LNAME, RECORD_ID, APPROVED ]
@@ -12,6 +13,7 @@ unalterable = [ ENTRY_CODE, EMAIL_ADDRESS, FNAME, LNAME, RECORD_ID, APPROVED ]
 class Manager:
     def __init__(self):
         self.svc = REDCapHttpConnector()
+        self.config = AppConfig()
         self.__cache = {}
         self.__last_cache_update = None
         self.__update_cache_if_needed()
@@ -27,7 +29,8 @@ class Manager:
 
             if users:
                 self.__cache = { (u[EMAIL_ADDRESS].lower(), u[ENTRY_CODE]) : u for u in users if u[APPROVED] == '1' }
-                self.__add_guest_login()
+                if not self.config.allowGuest:
+                    self.__add_guest_login()
 
     def __add_guest_login(self):
         email = 'guest@cd2h.org'
@@ -35,7 +38,6 @@ class Manager:
         self.__cache[(email, entry_code)] = None
 
     def __scrub(self, answers, fields_to_remove):
-
         output = answers.copy()
         for field in fields_to_remove:
             if field in output:
@@ -43,12 +45,10 @@ class Manager:
         return output
 
     def user_valid(self, email, entry_code):
-
         self.__update_cache_if_needed()
         return (email, entry_code) in self.__cache
 
     def get_user(self, email, entry_code):
-        
         self.__update_cache_if_needed()
         user = self.__cache.get((email, entry_code))
 
@@ -57,6 +57,8 @@ class Manager:
         return None
 
     def sign_up_user(self, email, new_user_form_data):
+        if not self.config.allowSignup:
+            return None
 
         self.__update_cache_if_needed()
         emails = [ key[0] for key in self.__cache ]
@@ -69,11 +71,16 @@ class Manager:
         return None
 
     def get_scores(self):
-
         return aggregate(self.__cache)
 
-    def update_user_answers(self, email, entry_code, answers):
+    def get_config(self):
+        return {
+            'admin': self.config.admin,
+            'allowSignup': self.config.allowSignup,
+            'allowGuest': self.config.allowGuest
+        }
 
+    def update_user_answers(self, email, entry_code, answers):
         # Remove unalterable fields and update server
         cln = self.__scrub(answers, unalterable)
         cln[RECORD_ID] = self.__cache[(email, entry_code)][RECORD_ID]

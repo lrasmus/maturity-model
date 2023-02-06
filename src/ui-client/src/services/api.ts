@@ -2,6 +2,7 @@ import Axios from 'axios';
 import { NewUserFormState } from '../model/LoginState';
 import { UserAnswersDTO, UserUpdateDTO, UserAnswers } from '../model/User';
 import { UserState } from '../model/UserState';
+import { AppConfigState } from '../model/AppConfigState';
 import { BaseAnswerScore, AnswerScores } from "../model/Score";
 import { 
     riosmFields, 
@@ -22,6 +23,19 @@ import {
 } from "../model/User";
 
 let serverState: UserAnswers = {};
+
+
+/*
+ * Request current scores for the user.
+ */
+export const getApplicationConfig = async (): Promise<AppConfigState> => {
+    const resp = await Axios.get('/api/config');
+
+    return {
+        ...resp.data
+    };
+};
+
 
 /*
  * Request a login with email and entryCode. If successful,

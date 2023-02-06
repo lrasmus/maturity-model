@@ -94,3 +94,12 @@ def get_scores():
     except Exception as ex:
         sys.stderr.write(f'Error: {ex}\n')
         return server_error()
+
+@app.route('/config', methods=['GET'])
+def get_config():
+    try:
+        return ok(mgr.get_config())
+
+    except Exception as ex:
+        sys.stderr.write(f'Error: {ex}\n')
+        return server_error()

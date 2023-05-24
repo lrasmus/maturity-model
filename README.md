@@ -24,23 +24,15 @@ The survey has three steps:
 3) A guided identification of  ‘bright spots’ related to the  deployment of key infrastructure capabilities.   
 
 
+## Running
 
-## Contact person 
+The easiest way to run Maturity Model is to execute it as a Docker container.  This requires the following steps:
 
-Point person (github handle) | Site | Core Director
-----------|--------------|---------------
-Liz Zampino (@ezampino) | UW / WUSTL| Adam Wilcox (@abwilcox)
-
-
-## Leads 
-
-Lead(s) (github handle) | Site
-----------|--------------|
-Adam Wilcox (@abwilcox) | Washington University St. Louis
-Robin Champieux (@rchampieux) | OHSU
+1. Configure the application to use your instance of REDCap.  Modify `config.json` to include your REDCap API token and your REDCap API URL.  Configure any other settings.
+2. Run `docker compose up -d`
+3. Access the Maturity Model software from [http://localhost:8888](http://localhost:8888)
 
 
+## Development
 
-
-
-
+For instructions on setting up the maturity-model application for development please see [app.md](app.md)

@@ -15,7 +15,7 @@ To run it locally, do the following steps:
 
 ```bash
 # Clone the repo
-$ git clone git@github.com:data2health/maturity-model.git
+$ git clone https://github.com/lrasmus/maturity-model.git
 
 # Setup a python virtual environment
 $ cd maturity-models/src/server
@@ -23,12 +23,28 @@ $ python3 -m venv venv
 $ . venv/bin/activate
 
 # Install API dependencies
-$ python3 -m pip install Flask requests
+$ python -m pip install -r requirements.txt
 ```
 
-Next, create a `config.json` file to tell the API the REDCap instance to point to under `/maturity-models/src/server/flaskr/app/modules/services/config.json`.
+Next, create a `config.json` file under `./maturity-models/src/server/flaskr/app/modules/services/config.json`.  For more informationabout the format of the configuration file, see [Server Configuration](#server-configuration).
+
+
+Run the API
+```bash
+$ python3 run.py
+```
+
+#### API Configuration
+
+The server configuration file is located at `./maturity-models/src/server/flaskr/app/modules/services/config.json`, and has the following structure:
+
 ```json
 {
+    "application": {
+        "admin": "contact@institution.edu",
+        "allowSignup": false,
+        "allowGuest": false
+    },
     "redcap": {
         "token": "<API_token>",
         "url": "https://redcap.example.org/api/"
@@ -36,10 +52,15 @@ Next, create a `config.json` file to tell the API the REDCap instance to point t
 }
 ```
 
-Run the API
-```bash
-$ python3 run.py
-```
+| Option | Notes |
+|--------|-------|
+| `admin` | The contact email to use for the site administrator.  This is used in dialogs if the user needs to reach out about the software. |
+| `allowSignup` | `true` or `false` - enable/disable the ability of users to sign up for an account via the website |
+| `allowGuest` | `true` or `false` - enable/disable the ability for someone to login to the software as a guest. |
+| `token` | The REDCap API token |
+| `url` | The REDCap API URL |
+
+
 
 ### Web client setup
 

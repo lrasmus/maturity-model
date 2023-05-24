@@ -1,0 +1,11 @@
+{
+    "application": {
+        "admin": "admin@yourorg.edu",
+        "allowSignup": false,
+        "allowGuest": false
+    },
+    "redcap": {
+            "token": "<REDCap API Token>",
+            "url": "https://redcap.yourorg.edu/redcap/api/"
+    }
+}

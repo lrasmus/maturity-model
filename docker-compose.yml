@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  maturitymodel:
+    image: maturitymodel
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 8888:80
+    volumes:
+      - ${PWD}/config.json:/app/server/flaskr/app/modules/services/config.json

@@ -109,7 +109,21 @@ export const defaultUserState = (): UserState => {
             'nlp_q3': '',
             'nlp_q4': '',
             'nlp_q5': '',
-            'nlp_q6': ''
+            'nlp_q6': '',
+
+            // CTME
+            'ctme_mm_survey_complete': '',
+            'study_mgmt_level': '',
+            'reg_and_audit_mgmt_level': '',
+            'financial_mgmt_level': '',
+            'investigational_prod_mgmt_level': '',
+            'subject_id_recruitment_level': '',
+            'subject_mgmt_level': '',
+            'data_level': '',
+            'reporting_analytics_dashboard_level': '',
+            'system_integration_level': '',
+            'staff_training_and_personnel_mgmt_level': '',
+            'org_maturity_culture_level': ''
         },
         answersLoadState: AnswerScoreLoadState.NotLoaded,
         email: '',
@@ -143,7 +157,8 @@ const userDefaultScore = (): BaseAnswerScore => {
             governance: 0,
             data_and_software_sharing: 0,
             research_informatics: 0
-        }
+        },
+        ctme: 0
     };
 }
 
@@ -168,6 +183,7 @@ const allDefaultScore = (): AllAnswerScore => {
             data_and_software_sharing: 0,
             research_informatics: 0
         },
+        ctme: 0,
         riosm_questions: {
             q1Stats: { mean: 0, min: 0, max: 0, median: 0 },
             q2Stats: { mean: 0, min: 0, max: 0, median: 0 },
@@ -221,6 +237,18 @@ const allDefaultScore = (): AllAnswerScore => {
             q5Stats: { mean: 0, min: 0, max: 0, median: 0 },
             q6Stats: { mean: 0, min: 0, max: 0, median: 0 }
         },
+        ctme_questions: {
+            q1Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q2Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q3Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q4Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q5Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q6Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q7Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q8Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q9Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q10Stats: { mean: 0, min: 0, max: 0, median: 0 }
+        },
         models_completed: {
             riosm: 0,
             quintegra_ehmm: 0,
@@ -233,7 +261,8 @@ const allDefaultScore = (): AllAnswerScore => {
             nlp: 0,
             eprmm: 0,
             sedoh: 0,
-            precision_health: 0
+            precision_health: 0,
+            ctme: 0
         }
     };
 }

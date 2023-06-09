@@ -65,6 +65,19 @@ export interface NLPQuestionScore {
     q6Stats: AnswerStats;
 }
 
+export interface CTMEQuestionScore {
+    q1Stats: AnswerStats;
+    q2Stats: AnswerStats;
+    q3Stats: AnswerStats;
+    q4Stats: AnswerStats;
+    q5Stats: AnswerStats;
+    q6Stats: AnswerStats;
+    q7Stats: AnswerStats;
+    q8Stats: AnswerStats;
+    q9Stats: AnswerStats;
+    q10Stats: AnswerStats;
+}
+
 export interface AllModelsCompleted {
     riosm: number;
     quintegra_ehmm: number;
@@ -78,6 +91,7 @@ export interface AllModelsCompleted {
     eprmm: number;
     sedoh: number;
     precision_health: number;
+    ctme: number;
 }
 
 export interface BaseAnswerScore {
@@ -95,6 +109,7 @@ export interface BaseAnswerScore {
     forrester: number;
     sedoh: number;
     precision_health: number;
+    ctme: number;
 }
 
 export interface AllAnswerScore extends BaseAnswerScore {
@@ -106,6 +121,7 @@ export interface AllAnswerScore extends BaseAnswerScore {
     quintegra_ehmm_questions: Quintegra_eHMMQuestionScore;
     riosm_questions: RIOSMQuestionScore;
     sedoh_questions: SEDoHQuestionScore;
+    ctme_questions: CTMEQuestionScore;
 }
 
 export interface AnswerStats {

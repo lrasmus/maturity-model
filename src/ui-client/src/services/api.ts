@@ -20,6 +20,7 @@ import {
     riosmGovernance, 
     riosmDataAndSoftware, 
     riosmResearchInformatics,
+    ctmeFields,
 } from "../model/User";
 
 let serverState: UserAnswers = {};
@@ -173,7 +174,8 @@ export const calculateUserScores = (user: UserAnswers): BaseAnswerScore => {
             governance                : sum(validate(riosmGovernance.map(f => user[f]))) / riosmGovernance.length,
             data_and_software_sharing : sum(validate(riosmDataAndSoftware.map(f => user[f]))) / riosmDataAndSoftware.length,
             research_informatics      : sum(validate(riosmResearchInformatics.map(f => user[f]))) / riosmResearchInformatics.length
-        }    
+        },
+        ctme             : sum(validate(ctmeFields.map(f => user[f]))) / (ctmeFields.length * maxFive)
     };
 };
 

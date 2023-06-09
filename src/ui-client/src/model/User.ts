@@ -96,7 +96,21 @@ export type AnswerField =
     'nlp_q3'                           |
     'nlp_q4'                           |
     'nlp_q5'                           |
-    'nlp_q6'
+    'nlp_q6'                           |
+
+    // CTME 1.0
+    'ctme_mm_survey_complete'          |
+    'study_mgmt_level'                 |
+    'reg_and_audit_mgmt_level'         |
+    'financial_mgmt_level'             |
+    'investigational_prod_mgmt_level'  |
+    'subject_id_recruitment_level'     |
+    'subject_mgmt_level'               |
+    'data_level'                       |
+    'reporting_analytics_dashboard_level'  |
+    'system_integration_level'         |
+    'staff_training_and_personnel_mgmt_level' |
+    'org_maturity_culture_level'
 
 
 export interface BaseUserAnswers {
@@ -232,4 +246,22 @@ export const NLP_Q6: AnswerField = 'nlp_q6';
 
 export const nlpFields: AnswerField[] = [
     NLP_Q1, NLP_Q2, NLP_Q3, NLP_Q4, NLP_Q5, NLP_Q6
+];
+
+// CTME
+export const CTME_Q1: AnswerField = 'study_mgmt_level';
+export const CTME_Q2: AnswerField = 'reg_and_audit_mgmt_level';
+export const CTME_Q3: AnswerField = 'financial_mgmt_level';
+export const CTME_Q4: AnswerField = 'investigational_prod_mgmt_level';
+export const CTME_Q5: AnswerField = 'subject_id_recruitment_level';
+export const CTME_Q6: AnswerField = 'subject_mgmt_level';
+export const CTME_Q7: AnswerField = 'data_level';
+export const CTME_Q8: AnswerField = 'reporting_analytics_dashboard_level';
+export const CTME_Q9: AnswerField = 'system_integration_level';
+export const CTME_Q10: AnswerField = 'staff_training_and_personnel_mgmt_level';
+export const CTME_Q11: AnswerField = 'org_maturity_culture_level'
+
+export const ctmeFields: AnswerField[] = [
+    CTME_Q1, CTME_Q2, CTME_Q3, CTME_Q4, CTME_Q5,
+    CTME_Q6, CTME_Q7, CTME_Q8, CTME_Q9, CTME_Q10
 ];

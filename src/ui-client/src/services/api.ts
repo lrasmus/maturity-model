@@ -30,7 +30,7 @@ let serverState: UserAnswers = {};
  * Request current scores for the user.
  */
 export const getApplicationConfig = async (): Promise<AppConfigState> => {
-    const resp = await Axios.get('/api/config');
+    const resp = await Axios.get('/config');
 
     return {
         ...resp.data
@@ -43,7 +43,7 @@ export const getApplicationConfig = async (): Promise<AppConfigState> => {
  * returns data for user from REDCap.
  */
 export const login = async (email: string, entryCode: string): Promise<UserAnswers> => {
-    const resp = await Axios.get('/api/user', {
+    const resp = await Axios.get('/user', {
         params: {
             email,
             entry_code: entryCode
@@ -60,7 +60,7 @@ export const login = async (email: string, entryCode: string): Promise<UserAnswe
  * Sign up new user.
  */
 export const signUp = async (newUserForm: NewUserFormState): Promise<number> => {
-    const resp = await Axios.post('/api/user', {
+    const resp = await Axios.post('/user', {
         email: newUserForm.emailAddress,
         institution: newUserForm.institutionName,
         entry_code: newUserForm.entryCode,
@@ -75,7 +75,7 @@ export const signUp = async (newUserForm: NewUserFormState): Promise<number> => 
  * Request current scores for the user.
  */
 export const getUserAndAggregateScores = async (user: UserState): Promise<AnswerScores> => {
-    const resp = await Axios.get('/api/scores', {
+    const resp = await Axios.get('/scores', {
         params: {
             email: user.email,
             entry_code: user.entryCode
@@ -122,7 +122,7 @@ export const update = async (user: UserState): Promise<UserUpdateDTO> => {
     /*
      * Update the server.
      */
-    const resp = await Axios.post('/api/user/answers', {
+    const resp = await Axios.post('/user/answers', {
         email: user.email,
         entry_code: user.entryCode,
         answers: diff

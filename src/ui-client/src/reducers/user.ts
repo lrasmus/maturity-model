@@ -247,7 +247,8 @@ const allDefaultScore = (): AllAnswerScore => {
             q7Stats: { mean: 0, min: 0, max: 0, median: 0 },
             q8Stats: { mean: 0, min: 0, max: 0, median: 0 },
             q9Stats: { mean: 0, min: 0, max: 0, median: 0 },
-            q10Stats: { mean: 0, min: 0, max: 0, median: 0 }
+            q10Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q11Stats: { mean: 0, min: 0, max: 0, median: 0 }
         },
         models_completed: {
             riosm: 0,

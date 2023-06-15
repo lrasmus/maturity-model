@@ -76,6 +76,7 @@ export interface CTMEQuestionScore {
     q8Stats: AnswerStats;
     q9Stats: AnswerStats;
     q10Stats: AnswerStats;
+    q11Stats: AnswerStats;
 }
 
 export interface AllModelsCompleted {

@@ -263,5 +263,6 @@ export const CTME_Q11: AnswerField = 'org_maturity_culture_level'
 
 export const ctmeFields: AnswerField[] = [
     CTME_Q1, CTME_Q2, CTME_Q3, CTME_Q4, CTME_Q5,
-    CTME_Q6, CTME_Q7, CTME_Q8, CTME_Q9, CTME_Q10
+    CTME_Q6, CTME_Q7, CTME_Q8, CTME_Q9, CTME_Q10,
+    CTME_Q11
 ];

@@ -100,6 +100,7 @@ export type AnswerField =
 
     // CTME 1.0
     'ctme_mm_survey_complete'          |
+    'maturity_level_description'       |
     'study_mgmt_level'                 |
     'reg_and_audit_mgmt_level'         |
     'financial_mgmt_level'             |

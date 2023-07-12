@@ -5,10 +5,12 @@ import sys
 import uuid
 
 from flask import Flask, Request, request, jsonify
+from flask_talisman import Talisman
 from .modules.response import ok, bad_request, forbidden, not_found, server_error
 from .modules.manager import Manager
 
 app = Flask(__name__)
+Talisman(app)
 mgr = Manager()
 
 #########################################

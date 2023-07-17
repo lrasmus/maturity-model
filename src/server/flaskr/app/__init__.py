@@ -17,11 +17,12 @@ mgr = Manager()
 # Routes
 #########################################
 
-@app.route('/user', methods=['GET'])
+@app.route('/login', methods=['POST'])
 def is_user():
     try:
-        email = request.args.get('email')
-        entry_code = request.args.get('entry_code')
+        req_data = request.get_json()
+        email = req_data.get('email')
+        entry_code = req_data.get('entry_code')
         
         if not email or not entry_code:
             return bad_request()

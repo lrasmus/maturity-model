@@ -43,7 +43,7 @@ export const getApplicationConfig = async (): Promise<AppConfigState> => {
  * returns data for user from REDCap.
  */
 export const login = async (email: string, entryCode: string): Promise<UserAnswers> => {
-    const resp = await Axios.get('/api/user', {
+    const resp = await Axios.post('/api/login', {
         params: {
             email,
             entry_code: entryCode

@@ -44,10 +44,8 @@ export const getApplicationConfig = async (): Promise<AppConfigState> => {
  */
 export const login = async (email: string, entryCode: string): Promise<UserAnswers> => {
     const resp = await Axios.post('/api/login', {
-        params: {
-            email,
-            entry_code: entryCode
-        }
+        email,
+        entry_code: entryCode
     });
     const dto = resp.data.user as UserAnswersDTO;
     const user = dtoToUser(dto);

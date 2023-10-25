@@ -326,8 +326,9 @@ def __get_category_score(user, keys):
     return 0.0
 
 def __get_aggregate_stats(scores, key):
-
-    stats = {}
+    # If there are no responses, we want the stats to all come back as 0.  Otherwise the UI has 
+    # a difficult time trying to render.
+    stats = {'mean': 0.0, 'min': 0.0, 'max': 0.0, 'median': 0.0}
     valid = [ score[key] for score in scores if score[key] != None ]
     len_valid = len(valid)
     if len_valid > 0:
@@ -335,5 +336,4 @@ def __get_aggregate_stats(scores, key):
         stats['min']    = min(valid)
         stats['max']    = max(valid)
         stats['median'] = median(valid)
-        return stats
-    return 0.0
+    return stats

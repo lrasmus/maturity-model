@@ -18,7 +18,7 @@ To run it locally, do the following steps:
 $ git clone https://github.com/lrasmus/maturity-model.git
 
 # Setup a python virtual environment
-$ cd maturity-models/src/server
+$ cd maturity-model/src/server
 $ python3 -m venv venv
 $ . venv/bin/activate
 

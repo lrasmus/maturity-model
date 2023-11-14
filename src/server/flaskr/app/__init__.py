@@ -3,13 +3,28 @@
 import os
 import sys
 import uuid
+import json
 
 from flask import Flask, Request, request, jsonify
+from flask_wtf.csrf import CSRFProtect, generate_csrf
 from .modules.response import ok, bad_request, forbidden, not_found, server_error
 from .modules.manager import Manager
 
 app = Flask(__name__)
 mgr = Manager()
+
+# Load our SECRET_KEY from our configuration file.  This is required to enable
+# CSRF capabilities.
+dir_path = os.path.dirname(os.path.realpath(__file__))
+with open(f'{dir_path}{os.path.sep}modules{os.path.sep}services{os.path.sep}config.json') as f:
+    config = json.load(f)
+    app.config.update(
+        SECRET_KEY=config['flask']['secret_key']
+    )
+
+# Enable CSRF protection for all POST calls.
+csrf = CSRFProtect()
+csrf.init_app(app)
 
 #########################################
 # Routes
@@ -33,7 +48,19 @@ def is_user():
 
     except Exception as ex:
         sys.stderr.write(f'Error: {ex}\n')
-        return server_error()    
+        return server_error()
+
+@app.route("/api/csrf", methods=['GET'])
+def get_csrf():
+    try:
+        # Credit to https://www.reddit.com/r/flask/comments/oyfeax/comment/h7snrv7/
+        # for the code used here
+        response = jsonify(detail="success")
+        response.headers.set("X-CSRFToken", generate_csrf())
+        return response
+    except Exception as ex:
+        sys.stderr.write(f'Error: {ex}\n')
+        return server_error()
 
 @app.route('/api/user', methods=['POST'])
 def new_user():
@@ -77,11 +104,12 @@ def update_data():
         sys.stderr.write(f'Error: {ex}\n')
         return server_error()
 
-@app.route('/api/scores', methods=['GET'])
+@app.route('/api/scores', methods=['POST'])
 def get_scores():
     try:
-        email = request.args.get('email')
-        entry_code = request.args.get('entry_code')
+        req_data = request.get_json()
+        email = req_data.get('email')
+        entry_code = req_data.get('entry_code')
 
         if not email or not entry_code:
             return bad_request()

@@ -1,4 +1,5 @@
 import React from 'react';
+import Axios from 'axios';
 import { connect } from 'react-redux';
 import { AppState } from '../model/AppState';
 import { Login } from './Login/Login';
@@ -27,6 +28,17 @@ interface StateProps {
 type Props = StateProps & DispatchProps & OwnProps;
 
 class App extends React.PureComponent<Props> {
+    // Credit to https://stackoverflow.com/a/55748279 for the solution
+    // on setting CSRF token on app launch.
+    componentDidMount() {
+        // Send get request to get CSRF token once site is visited.
+        Axios.get('/api/csrf')
+          .then(res => {
+             // Set it in header for the rest of the axios requests.
+            Axios.defaults.headers.post['X-CSRFToken'] = res.headers['x-csrftoken'];
+          })
+      }
+
     public render() {
         const { dispatch, general, login, models, user, appConfig } = this.props;
 

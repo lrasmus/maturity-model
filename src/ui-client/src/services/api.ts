@@ -73,11 +73,9 @@ export const signUp = async (newUserForm: NewUserFormState): Promise<number> => 
  * Request current scores for the user.
  */
 export const getUserAndAggregateScores = async (user: UserState): Promise<AnswerScores> => {
-    const resp = await Axios.get('/api/scores', {
-        params: {
-            email: user.email,
-            entry_code: user.entryCode
-        }
+    const resp = await Axios.post('/api/scores', {
+        email: user.email,
+        entry_code: user.entryCode
     });
 
     return {

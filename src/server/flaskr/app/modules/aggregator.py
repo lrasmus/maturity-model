@@ -21,6 +21,7 @@ eprmm             = 'eprmm'
 forrester         = 'forrester'
 sedoh             = 'sedoh'
 precision_health  = 'precision_health'
+ctme              = 'ctme'
 
 riosm_questions            = 'riosm_questions'
 quintegra_ehmm_questions   = 'quintegra_ehmm_questions'
@@ -29,6 +30,7 @@ sedoh_questions            = 'sedoh_questions'
 precision_health_questions = 'precision_health_questions'
 nestcc_questions           = 'nestcc_questions'
 nlp_questions              = 'nlp_questions'
+ctme_questions             = 'ctme_questions'
 
 # RIOSM categories
 riosm_categories     = 'riosm_categories'
@@ -90,6 +92,19 @@ nlp_q4  = 'nlp_q4'
 nlp_q5  = 'nlp_q5'
 nlp_q6  = 'nlp_q6'
 
+# CTME questions
+ctme_q1  = 'study_mgmt_level'
+ctme_q2  = 'reg_and_audit_mgmt_level'
+ctme_q3  = 'financial_mgmt_level'
+ctme_q4  = 'investigational_prod_mgmt_level'
+ctme_q5  = 'subject_id_recruitment_level'
+ctme_q6  = 'subject_mgmt_level'
+ctme_q7  = 'data_level'
+ctme_q8  = 'reporting_analytics_dashboard_level'
+ctme_q9  = 'system_integration_level'
+ctme_q10  = 'staff_training_and_personnel_mgmt_level'
+ctme_q11  = 'org_maturity_culture_level'
+
 # Stats
 q1Stats = 'q1Stats'
 q2Stats = 'q2Stats'
@@ -123,6 +138,7 @@ def get_user_score(user):
     score[eprmm]             = float(user[EPRMM_Q1]) / max_six if user[EPRMM_Q1].isdigit() else None if user[EPRMM_COMPLETE] == '2' else None
     score[sedoh]             = sum([ float(user[field]) for field in sedoh_fields if user[field].isdigit() ]) / (len(sedoh_fields) * max_seven) if user[SEDOH_COMPLETE] == '2' else None
     score[precision_health]  = sum([ float(user[field]) for field in precision_health_fields if user[field].isdigit() ]) / (len(precision_health_fields) * max_five) if user[PRECISION_HEALTH_COMPLETE] == '2' else None
+    score[ctme]              = sum([ float(user[field]) for field in ctme_fields if user[field].isdigit() ]) / (len(ctme_fields) * max_five) if user[CTME_COMPLETE] == '2' else None
 
     score[riosm_categories] = {}
     score[riosm_categories][overall]              = __get_category_score(user, riosm_fields)
@@ -183,6 +199,19 @@ def get_user_score(user):
     score[nlp_questions][nlp_q5]   = float(user[NLP_Q5]) if user[NLP_Q5].isdigit() else None if user[NLP_COMPLETE] == '2' else None
     score[nlp_questions][nlp_q6]   = float(user[NLP_Q6]) if user[NLP_Q6].isdigit() else None if user[NLP_COMPLETE] == '2' else None
 
+    score[ctme_questions] = {}
+    score[ctme_questions][ctme_q1]   = float(user[CTME_Q1]) if user[CTME_Q1].isdigit() else None if user[CTME_COMPLETE] == '2' else None
+    score[ctme_questions][ctme_q2]   = float(user[CTME_Q2]) if user[CTME_Q2].isdigit() else None if user[CTME_COMPLETE] == '2' else None
+    score[ctme_questions][ctme_q3]   = float(user[CTME_Q3]) if user[CTME_Q3].isdigit() else None if user[CTME_COMPLETE] == '2' else None
+    score[ctme_questions][ctme_q4]   = float(user[CTME_Q4]) if user[CTME_Q4].isdigit() else None if user[CTME_COMPLETE] == '2' else None
+    score[ctme_questions][ctme_q5]   = float(user[CTME_Q5]) if user[CTME_Q5].isdigit() else None if user[CTME_COMPLETE] == '2' else None
+    score[ctme_questions][ctme_q6]   = float(user[CTME_Q6]) if user[CTME_Q6].isdigit() else None if user[CTME_COMPLETE] == '2' else None
+    score[ctme_questions][ctme_q7]   = float(user[CTME_Q7]) if user[CTME_Q7].isdigit() else None if user[CTME_COMPLETE] == '2' else None
+    score[ctme_questions][ctme_q8]   = float(user[CTME_Q8]) if user[CTME_Q8].isdigit() else None if user[CTME_COMPLETE] == '2' else None
+    score[ctme_questions][ctme_q9]   = float(user[CTME_Q9]) if user[CTME_Q9].isdigit() else None if user[CTME_COMPLETE] == '2' else None
+    score[ctme_questions][ctme_q10]   = float(user[CTME_Q10]) if user[CTME_Q10].isdigit() else None if user[CTME_COMPLETE] == '2' else None
+    score[ctme_questions][ctme_q11]   = float(user[CTME_Q11]) if user[CTME_Q11].isdigit() else None if user[CTME_COMPLETE] == '2' else None
+
     score[models_completed] = {}
     score[models_completed][riosm]             = 1 if user[RIOSM_COMPLETE] == '2' else None
     score[models_completed][quintegra_ehmm]    = 1 if user[QUINTEGRA_EHMM_COMPELTE] == '2' else None
@@ -197,6 +226,7 @@ def get_user_score(user):
     score[models_completed][forrester]         = 1 if user[FORRESTER_COMPLETE] == '2' else None
     score[models_completed][sedoh]             = 1 if user[SEDOH_COMPLETE] == '2' else None
     score[models_completed][precision_health]  = 1 if user[PRECISION_HEALTH_COMPLETE] == '2' else None
+    score[models_completed][ctme]              = 1 if user[CTME_COMPLETE] == '2' else None
 
     return score
 
@@ -214,6 +244,7 @@ def aggregate(all):
     nlp_question_scores = [ v[nlp_questions] for v in all_scores ]
     sedoh_question_scores = [ v[sedoh_questions] for v in all_scores ]
     precision_health_question_scores = [ v[precision_health_questions] for v in all_scores ]
+    ctme_question_scores = [ v[ctme_questions] for v in all_scores ]
 
     agg_score[riosm]             = __get_aggregate_score(all_scores, riosm)
     agg_score[quintegra_ehmm]    = __get_aggregate_score(all_scores, quintegra_ehmm)
@@ -227,6 +258,7 @@ def aggregate(all):
     agg_score[eprmm]             = __get_aggregate_score(all_scores, eprmm)
     agg_score[sedoh]             = __get_aggregate_score(all_scores, sedoh)
     agg_score[precision_health]  = __get_aggregate_score(all_scores, precision_health)
+    agg_score[ctme]              = __get_aggregate_score(all_scores, ctme)
 
     agg_score[riosm_categories] = {}
     agg_score[riosm_categories][overall]              = __get_aggregate_score(riosm_scores, overall)
@@ -287,6 +319,19 @@ def aggregate(all):
     agg_score[nlp_questions][q5Stats]  = __get_aggregate_stats(nlp_question_scores, nlp_q5)
     agg_score[nlp_questions][q6Stats]  = __get_aggregate_stats(nlp_question_scores, nlp_q6)
 
+    agg_score[ctme_questions] = {}
+    agg_score[ctme_questions][q1Stats]  = __get_aggregate_stats(ctme_question_scores, ctme_q1)
+    agg_score[ctme_questions][q2Stats]  = __get_aggregate_stats(ctme_question_scores, ctme_q2)
+    agg_score[ctme_questions][q3Stats]  = __get_aggregate_stats(ctme_question_scores, ctme_q3)
+    agg_score[ctme_questions][q4Stats]  = __get_aggregate_stats(ctme_question_scores, ctme_q4)
+    agg_score[ctme_questions][q5Stats]  = __get_aggregate_stats(ctme_question_scores, ctme_q5)
+    agg_score[ctme_questions][q6Stats]  = __get_aggregate_stats(ctme_question_scores, ctme_q6)
+    agg_score[ctme_questions][q7Stats]  = __get_aggregate_stats(ctme_question_scores, ctme_q7)
+    agg_score[ctme_questions][q8Stats]  = __get_aggregate_stats(ctme_question_scores, ctme_q8)
+    agg_score[ctme_questions][q9Stats]  = __get_aggregate_stats(ctme_question_scores, ctme_q9)
+    agg_score[ctme_questions][q10Stats]  = __get_aggregate_stats(ctme_question_scores, ctme_q10)
+    agg_score[ctme_questions][q11Stats]  = __get_aggregate_stats(ctme_question_scores, ctme_q11)
+
     agg_score[models_completed] = {}
     agg_score[models_completed][riosm]             = __get_aggregate_completed_models(all_models_completed, riosm)
     agg_score[models_completed][quintegra_ehmm]    = __get_aggregate_completed_models(all_models_completed, quintegra_ehmm)
@@ -300,6 +345,7 @@ def aggregate(all):
     agg_score[models_completed][eprmm]             = __get_aggregate_completed_models(all_models_completed, eprmm)
     agg_score[models_completed][sedoh]             = __get_aggregate_completed_models(all_models_completed, sedoh)
     agg_score[models_completed][precision_health]  = __get_aggregate_completed_models(all_models_completed, precision_health)
+    agg_score[models_completed][ctme]               = __get_aggregate_completed_models(all_models_completed, ctme)
 
     return agg_score, len(all_scores)
 

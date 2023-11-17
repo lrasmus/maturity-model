@@ -112,7 +112,7 @@ export const defaultUserState = (): UserState => {
             'nlp_q6': '',
 
             // CTME
-            'ctme_mm_survey_complete': '',
+            'ctme_mm_survey_complete': FormState.NotStarted,
             'study_mgmt_level': '',
             'reg_and_audit_mgmt_level': '',
             'financial_mgmt_level': '',
@@ -177,13 +177,13 @@ const allDefaultScore = (): AllAnswerScore => {
         forrester: 0,
         sedoh: 0,
         precision_health: 0,
+        ctme: 0,
         riosm_categories: {
             overall: 0,
             governance: 0,
             data_and_software_sharing: 0,
             research_informatics: 0
         },
-        ctme: 0,
         riosm_questions: {
             q1Stats: { mean: 0, min: 0, max: 0, median: 0 },
             q2Stats: { mean: 0, min: 0, max: 0, median: 0 },

@@ -138,3 +138,21 @@ NLP_Q6 = 'nlp_q6'
 nlp_fields = [
     NLP_Q1, NLP_Q2, NLP_Q3, NLP_Q4, NLP_Q5, NLP_Q6
 ]
+
+# CTME
+CTME_COMPLETE = 'ctme_mm_survey_complete'
+CTME_Q1 = 'study_mgmt_level'
+CTME_Q2 = 'reg_and_audit_mgmt_level'
+CTME_Q3 = 'financial_mgmt_level'
+CTME_Q4 = 'investigational_prod_mgmt_level'
+CTME_Q5 = 'subject_id_recruitment_level'
+CTME_Q6 = 'subject_mgmt_level'
+CTME_Q7 = 'data_level'
+CTME_Q8 = 'reporting_analytics_dashboard_level'
+CTME_Q9 = 'system_integration_level'
+CTME_Q10 = 'staff_training_and_personnel_mgmt_level'
+CTME_Q11 = 'org_maturity_culture_level'
+
+ctme_fields = [
+    CTME_Q1, CTME_Q2, CTME_Q3, CTME_Q4, CTME_Q5, CTME_Q6, CTME_Q7, CTME_Q8, CTME_Q9, CTME_Q10, CTME_Q11
+]

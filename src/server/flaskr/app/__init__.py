@@ -30,7 +30,7 @@ csrf.init_app(app)
 # Routes
 #########################################
 
-@app.route('/api/login', methods=['POST'])
+@app.route('/login', methods=['POST'])
 def is_user():
     try:
         req_data = request.get_json()
@@ -50,7 +50,7 @@ def is_user():
         sys.stderr.write(f'Error: {ex}\n')
         return server_error()
 
-@app.route("/api/csrf", methods=['GET'])
+@app.route("/csrf", methods=['GET'])
 def get_csrf():
     try:
         # Credit to https://www.reddit.com/r/flask/comments/oyfeax/comment/h7snrv7/
@@ -62,7 +62,7 @@ def get_csrf():
         sys.stderr.write(f'Error: {ex}\n')
         return server_error()
 
-@app.route('/api/user', methods=['POST'])
+@app.route('/user', methods=['POST'])
 def new_user():
     try:
         req_data = request.get_json()
@@ -83,7 +83,7 @@ def new_user():
         sys.stderr.write(f'Error: {ex}\n')
         return server_error()
 
-@app.route('/api/user/answers', methods=['POST'])
+@app.route('/user/answers', methods=['POST'])
 def update_data():
     try:
         req_data = request.get_json()
@@ -104,7 +104,7 @@ def update_data():
         sys.stderr.write(f'Error: {ex}\n')
         return server_error()
 
-@app.route('/api/scores', methods=['POST'])
+@app.route('/scores', methods=['POST'])
 def get_scores():
     try:
         req_data = request.get_json()
@@ -124,7 +124,7 @@ def get_scores():
         sys.stderr.write(f'Error: {ex}\n')
         return server_error()
 
-@app.route('/api/config', methods=['GET'])
+@app.route('/config', methods=['GET'])
 def get_config():
     try:
         return ok(mgr.get_config())

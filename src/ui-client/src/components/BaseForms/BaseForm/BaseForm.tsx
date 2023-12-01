@@ -7,6 +7,7 @@ interface Props {
     headerLarge?: boolean;
     subheader?: string | JSX.Element | JSX.Element[];
     content: string | JSX.Element | JSX.Element[];
+    footer?: string | JSX.Element | JSX.Element[];
 }
 
 interface State {
@@ -30,7 +31,7 @@ export default class BaseForm extends React.PureComponent<Props,State> {
     public render() {
         const c = this.className;
         const classes = [ c ];
-        const { header, headerLarge, subheader, content } = this.props;
+        const { header, headerLarge, subheader, content, footer } = this.props;
         const { show } = this.state;
 
         if (!show) {
@@ -40,7 +41,7 @@ export default class BaseForm extends React.PureComponent<Props,State> {
         return (
             <div className={classes.join(' ')}>
                 <div className={`${c}-inner`}>
-                    <BaseFormSection header={header} headerLarge={headerLarge} subheader={subheader} content={content} />
+                    <BaseFormSection header={header} headerLarge={headerLarge} subheader={subheader} content={content} footer={footer} />
                 </div>
             </div>
         );

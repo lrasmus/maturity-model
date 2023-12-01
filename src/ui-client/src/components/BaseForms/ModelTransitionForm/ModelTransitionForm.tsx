@@ -8,6 +8,7 @@ interface Props {
     headerLarge?: boolean;
     subheader?: string | JSX.Element;
     content: string | JSX.Element | JSX.Element[];
+    footer?: string | JSX.Element | JSX.Element[];
     cornerInfo?: string | JSX.Element;
     onGoBackClick?: () => any;
 }
@@ -36,7 +37,8 @@ export default class ModelTransitionForm extends React.PureComponent<Props,State
             outgoing: {
                 header: '',
                 subheader: undefined,
-                content: ''
+                content: '',
+                footer: undefined,
             },
             transition: TransitionState.Blank
         }

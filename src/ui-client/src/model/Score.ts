@@ -48,6 +48,14 @@ export interface SEDoHQuestionScore {
     q5Stats: AnswerStats;
 }
 
+export interface SEDoH_v2QuestionScore {
+    q1Stats: AnswerStats;
+    q2Stats: AnswerStats;
+    q3Stats: AnswerStats;
+    q4Stats: AnswerStats;
+    q5Stats: AnswerStats;
+}
+
 export interface NESTccQuestionScore {
     q1Stats: AnswerStats;
     q2Stats: AnswerStats;
@@ -91,6 +99,7 @@ export interface AllModelsCompleted {
     nlp: number;
     eprmm: number;
     sedoh: number;
+    sedoh_v2: number;
     precision_health: number;
     ctme: number;
 }
@@ -109,6 +118,7 @@ export interface BaseAnswerScore {
     eprmm: number;
     forrester: number;
     sedoh: number;
+    sedoh_v2: number;
     precision_health: number;
     ctme: number;
 }
@@ -122,6 +132,7 @@ export interface AllAnswerScore extends BaseAnswerScore {
     quintegra_ehmm_questions: Quintegra_eHMMQuestionScore;
     riosm_questions: RIOSMQuestionScore;
     sedoh_questions: SEDoHQuestionScore;
+    sedoh_v2_questions: SEDoH_v2QuestionScore;
     ctme_questions: CTMEQuestionScore;
 }
 

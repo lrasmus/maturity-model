@@ -12,6 +12,7 @@ import {
     HIMSS_EMRAM_Q1, 
     himssCCmmFields,
     sedohFields,
+    sedoh_v2Fields,
     EPRMM_Q1,
     NEHTA_IMM_Q1,
     nestccFields,
@@ -163,6 +164,7 @@ export const calculateUserScores = (user: UserAnswers): BaseAnswerScore => {
         nlp               : sum(validate(nlpFields.map(f => user[f]))) / (nlpFields.length * maxFive),
         eprmm             : valElseZero(user[EPRMM_Q1]) / maxSix,
         sedoh             : sum(validate(sedohFields.map(f => user[f]))) / (sedohFields.length * maxSeven),
+        sedoh_v2          : sum(validate(sedoh_v2Fields.map(f => user[f]))) / (sedoh_v2Fields.length * maxSeven),
         forrester         : 0.0,
         precision_health  : sum(validate(precisionHealthFields.map(f => user[f]))) / (precisionHealthFields.length * maxFive),
         riosm_categories  : {

@@ -5,6 +5,7 @@ interface Props {
     headerLarge?: boolean;
     subheader?: string | JSX.Element | JSX.Element[];
     content: string | JSX.Element | JSX.Element[];
+    footer?: string | JSX.Element | JSX.Element[];
 }
 
 export default class BaseFormSection extends React.PureComponent<Props> {
@@ -12,13 +13,14 @@ export default class BaseFormSection extends React.PureComponent<Props> {
 
     public render() {
         const c = this.className;
-        const { header, headerLarge, subheader, content } = this.props;
+        const { header, headerLarge, subheader, content, footer } = this.props;
 
         return (
             <div className={`${c}-section`}>
                 {header && <div className={`${c}-header ${headerLarge ? 'lg' : ''}`}>{header}</div>}
                 {subheader && <div className={`${c}-subheader`}>{subheader}</div>}
                 <div className={`${c}-content`}>{content}</div>
+                {footer && <div className={`${c}-footer`}>{footer}</div>}
             </div>
         );
     }

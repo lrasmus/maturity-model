@@ -12,6 +12,7 @@ import { PrecisionHealth } from '../../model/Models/PrecisionHealth';
 import { Quintegra_eHMM } from '../../model/Models/Quintegra_eHMM';
 import { HAAM } from '../../model/Models/HAAM';
 import { SEDoH } from '../../model/Models/SEDoH';
+import { SEDoH_v2 } from '../../model/Models/SEDoH_v2';
 import { NESTcc } from '../../model/Models/NESTcc';
 import { NLP } from '../../model/Models/NLP';
 import { CTME } from '../../model/Models/CTME';
@@ -171,6 +172,13 @@ export default class Results extends React.PureComponent<Props,State> {
                         chartDataPoint.push({ model: model, all: all.sedoh, user: user.sedoh, max: 1.0 });
                         mappedCompletedModels.set(m.shortName, models_completed.sedoh);
                         completedModels.push(models_completed.sedoh);
+                        break;
+                    };
+                    case SEDoH_v2.name: {
+                        const model = m.shortName + ' (' + models_completed.sedoh_v2.toString() + ')';
+                        chartDataPoint.push({ model: model, all: all.sedoh_v2, user: user.sedoh_v2, max: 1.0 });
+                        mappedCompletedModels.set(m.shortName, models_completed.sedoh_v2);
+                        completedModels.push(models_completed.sedoh_v2);
                         break;
                     };
                     case NESTcc.name: {

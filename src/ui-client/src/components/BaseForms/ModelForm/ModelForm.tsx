@@ -100,6 +100,7 @@ export class ModelForm extends React.PureComponent<Props,State> {
                     />)
                 )}
                 cornerInfo={cornerInfo}
+                footer={q.footer}
                 onGoBackClick={this.handleGoBackClick}
             />
         );

@@ -49,6 +49,9 @@ export default class ModelSummary extends React.PureComponent<Props> {
         if (modelName === this.res.SEDoH.name) {
             return this.res.SEDoH.questions[index];
         };
+        if (modelName === this.res.SEDoH_v2.name) {
+            return this.res.SEDoH_v2.questions[index];
+        };
         if (modelName === this.res.NESTcc.name) {
             return this.res.NESTcc.questions[index];
         };
@@ -67,6 +70,7 @@ export default class ModelSummary extends React.PureComponent<Props> {
     private precisionHealth = this.results.all.precision_health_questions;
     private haam = this.results.all.haam_questions;
     private sedoh = this.results.all.sedoh_questions;
+    private sedoh_v2 = this.results.all.sedoh_v2_questions;
     private nestcc = this.results.all.nestcc_questions;
     private nlp = this.results.all.nlp_questions;
     private ctme = this.results.all.ctme_questions;
@@ -265,6 +269,41 @@ export default class ModelSummary extends React.PureComponent<Props> {
                 }
             ]
         },
+        SEDoH_v2: {
+            name: 'SEDoH_v2',
+            questions: [
+                {
+                    mean: this.sedoh_v2.q1Stats.mean,
+                    min: this.sedoh_v2.q1Stats.min,
+                    max: this.sedoh_v2.q1Stats.max,
+                    median: this.sedoh_v2.q1Stats.median
+                },
+                {
+                    mean: this.sedoh_v2.q2Stats.mean,
+                    min: this.sedoh_v2.q2Stats.min,
+                    max: this.sedoh_v2.q2Stats.max,
+                    median: this.sedoh_v2.q2Stats.median
+                },
+                {
+                    mean: this.sedoh_v2.q3Stats.mean,
+                    min: this.sedoh_v2.q3Stats.min,
+                    max: this.sedoh_v2.q3Stats.max,
+                    median: this.sedoh_v2.q3Stats.median
+                },
+                {
+                    mean: this.sedoh_v2.q4Stats.mean,
+                    min: this.sedoh_v2.q4Stats.min,
+                    max: this.sedoh_v2.q4Stats.max,
+                    median: this.sedoh_v2.q4Stats.median
+                },
+                {
+                    mean: this.sedoh_v2.q5Stats.mean,
+                    min: this.sedoh_v2.q5Stats.min,
+                    max: this.sedoh_v2.q5Stats.max,
+                    median: this.sedoh_v2.q5Stats.median
+                }
+            ]
+        },
         NESTcc: {
             name: 'NESTcc',
             questions: [
@@ -421,6 +460,7 @@ interface Result {
     PrecisionHealth: ModelResult;
     HAAM: ModelResult;
     SEDoH: ModelResult;
+    SEDoH_v2: ModelResult;
     NESTcc: ModelResult;
     NLP: ModelResult;
     CTME: ModelResult;

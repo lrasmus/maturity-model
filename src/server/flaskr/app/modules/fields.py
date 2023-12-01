@@ -96,6 +96,18 @@ sedoh_fields = [
     SEDOH_Q1, SEDOH_Q2, SEDOH_Q3, SEDOH_Q4, SEDOH_Q5
 ]
 
+# SEDoH v2
+SEDOH_V2_COMPLETE = 'social_and_environmental_determinants_of_health_complete'
+SEDOH_V2_Q1 = 'sedoh_q1_v2'
+SEDOH_V2_Q2 = 'sedoh_q2_v2'
+SEDOH_V2_Q3 = 'sedoh_q3_v2'
+SEDOH_V2_Q4 = 'sedoh_q4_v2'
+SEDOH_V2_Q5 = 'sedoh_q5_v2'
+
+sedoh_v2_fields = [
+    SEDOH_V2_Q1, SEDOH_V2_Q2, SEDOH_V2_Q3, SEDOH_V2_Q4, SEDOH_V2_Q5
+]
+
 # Precision Health
 PRECISION_HEALTH_COMPLETE = 'precision_health_complete'
 PRECISION_HEALTH_Q1 = 'precision_health_q1'

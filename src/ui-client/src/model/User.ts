@@ -81,6 +81,14 @@ export type AnswerField =
     'sedoh_q4'                         |
     'sedoh_q5'                         |
 
+    // SEDoH v2
+    'social_and_environmental_determinants_of_health_complete'                   |
+    'sedoh_q1_v2'                      |
+    'sedoh_q2_v2'                      |
+    'sedoh_q3_v2'                      |
+    'sedoh_q4_v2'                      |
+    'sedoh_q5_v2'                      |
+
     // NESTcc
     'nestcc_complete'                  |
     'nestcc_q1'                        |
@@ -206,6 +214,17 @@ export const SEDOH_Q5: AnswerField = 'sedoh_q5';
 
 export const sedohFields: AnswerField[] = [
     SEDOH_Q1, SEDOH_Q2, SEDOH_Q3, SEDOH_Q4, SEDOH_Q5
+];
+
+// SEDoH v2
+export const SEDOH_V2_Q1: AnswerField = 'sedoh_q1_v2';
+export const SEDOH_V2_Q2: AnswerField = 'sedoh_q2_v2';
+export const SEDOH_V2_Q3: AnswerField = 'sedoh_q3_v2';
+export const SEDOH_V2_Q4: AnswerField = 'sedoh_q4_v2';
+export const SEDOH_V2_Q5: AnswerField = 'sedoh_q5_v2';
+
+export const sedoh_v2Fields: AnswerField[] = [
+    SEDOH_V2_Q1, SEDOH_V2_Q2, SEDOH_V2_Q3, SEDOH_V2_Q4, SEDOH_V2_Q5
 ];
 
 // Precision Health

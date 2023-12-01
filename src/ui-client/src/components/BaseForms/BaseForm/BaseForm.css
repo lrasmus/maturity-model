@@ -44,6 +44,12 @@
     max-width: 800px;
 }
 
+.form-footer {
+    max-width: 900px;
+    text-align: center;
+    margin: auto;
+}
+
 .form-header.lg {
     color: rgb(40, 40, 40);
     font-size: 2.8rem;

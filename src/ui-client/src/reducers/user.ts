@@ -81,6 +81,14 @@ export const defaultUserState = (): UserState => {
             'sedoh_q4': '',
             'sedoh_q5': '',
 
+            // SEDoH v2
+            'social_and_environmental_determinants_of_health_complete': FormState.NotStarted,
+            'sedoh_q1_v2': '',
+            'sedoh_q2_v2': '',
+            'sedoh_q3_v2': '',
+            'sedoh_q4_v2': '',
+            'sedoh_q5_v2': '',
+
             // Precision Health
             'precision_health_complete': FormState.NotStarted,
             'precision_health_q1': '',
@@ -151,6 +159,7 @@ const userDefaultScore = (): BaseAnswerScore => {
         eprmm: 0,
         forrester: 0,
         sedoh: 0,
+        sedoh_v2: 0,
         precision_health: 0,
         riosm_categories: {
             overall: 0,
@@ -176,6 +185,7 @@ const allDefaultScore = (): AllAnswerScore => {
         eprmm: 0,
         forrester: 0,
         sedoh: 0,
+        sedoh_v2: 0,
         precision_health: 0,
         ctme: 0,
         riosm_categories: {
@@ -204,6 +214,13 @@ const allDefaultScore = (): AllAnswerScore => {
             q1Stats: { mean: 0, min: 0, max: 0, median: 0 }
         },
         sedoh_questions: {
+            q1Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q2Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q3Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q4Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q5Stats: { mean: 0, min: 0, max: 0, median: 0 }
+        },
+        sedoh_v2_questions: {
             q1Stats: { mean: 0, min: 0, max: 0, median: 0 },
             q2Stats: { mean: 0, min: 0, max: 0, median: 0 },
             q3Stats: { mean: 0, min: 0, max: 0, median: 0 },
@@ -262,6 +279,7 @@ const allDefaultScore = (): AllAnswerScore => {
             nlp: 0,
             eprmm: 0,
             sedoh: 0,
+            sedoh_v2: 0,
             precision_health: 0,
             ctme: 0
         }

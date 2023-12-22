@@ -3,3 +3,6 @@
 *.pyc
 
 .vscode/
+
+# Don't accidentally allow secrets to get checked in
+config.json

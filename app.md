@@ -18,7 +18,7 @@ To run it locally, do the following steps:
 $ git clone https://github.com/lrasmus/maturity-model.git
 
 # Setup a python virtual environment
-$ cd maturity-models/src/server
+$ cd maturity-model/src/server
 $ python3 -m venv venv
 $ . venv/bin/activate
 
@@ -48,6 +48,9 @@ The server configuration file is located at `./maturity-models/src/server/flaskr
     "redcap": {
         "token": "<API_token>",
         "url": "https://redcap.example.org/api/"
+    },
+    "flask": {
+        "secret_key": "12345678901234567890123456789012345678901234567890123456789012345"
     }
 }
 ```
@@ -59,8 +62,13 @@ The server configuration file is located at `./maturity-models/src/server/flaskr
 | `allowGuest` | `true` or `false` - enable/disable the ability for someone to login to the software as a guest. |
 | `token` | The REDCap API token |
 | `url` | The REDCap API URL |
+| `secret_key` | The [secret key used by Flask](https://flask.palletsprojects.com/en/2.3.x/config/#SECRET_KEY) for things like generating CSRFs. |
 
+The `secret_key` can be generated using:
 
+```
+python -c 'import secrets; print(secrets.token_hex())'
+```
 
 ### Web client setup
 

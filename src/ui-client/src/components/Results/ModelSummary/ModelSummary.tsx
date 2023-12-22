@@ -55,6 +55,9 @@ export default class ModelSummary extends React.PureComponent<Props> {
         if (modelName === this.res.NLP.name) {
             return this.res.NLP.questions[index];
         };
+        if (modelName === this.res.CTME.name) {
+            return this.res.CTME.questions[index];
+        };
         return {mean: 0, min: 0, max: 0, median: 0};
     }
 
@@ -66,6 +69,7 @@ export default class ModelSummary extends React.PureComponent<Props> {
     private sedoh = this.results.all.sedoh_questions;
     private nestcc = this.results.all.nestcc_questions;
     private nlp = this.results.all.nlp_questions;
+    private ctme = this.results.all.ctme_questions;
 
     private res: Result = {
         RIOSM: {
@@ -336,6 +340,77 @@ export default class ModelSummary extends React.PureComponent<Props> {
                     median: this.nlp.q6Stats.median
                 }
             ]
+        },
+        CTME: {
+            name: 'CTME',
+            questions: [
+                {
+                    mean: this.ctme.q1Stats.mean,
+                    min: this.ctme.q1Stats.min,
+                    max: this.ctme.q1Stats.max,
+                    median: this.ctme.q1Stats.median
+                },
+                {
+                    mean: this.ctme.q2Stats.mean,
+                    min: this.ctme.q2Stats.min,
+                    max: this.ctme.q2Stats.max,
+                    median: this.ctme.q2Stats.median
+                },
+                {
+                    mean: this.ctme.q3Stats.mean,
+                    min: this.ctme.q3Stats.min,
+                    max: this.ctme.q3Stats.max,
+                    median: this.ctme.q3Stats.median
+                },
+                {
+                    mean: this.ctme.q4Stats.mean,
+                    min: this.ctme.q4Stats.min,
+                    max: this.ctme.q4Stats.max,
+                    median: this.ctme.q4Stats.median
+                },
+                {
+                    mean: this.ctme.q5Stats.mean,
+                    min: this.ctme.q5Stats.min,
+                    max: this.ctme.q5Stats.max,
+                    median: this.ctme.q5Stats.median
+                },
+                {
+                    mean: this.ctme.q6Stats.mean,
+                    min: this.ctme.q6Stats.min,
+                    max: this.ctme.q6Stats.max,
+                    median: this.ctme.q6Stats.median
+                },
+                {
+                    mean: this.ctme.q7Stats.mean,
+                    min: this.ctme.q7Stats.min,
+                    max: this.ctme.q7Stats.max,
+                    median: this.ctme.q7Stats.median
+                },
+                {
+                    mean: this.ctme.q8Stats.mean,
+                    min: this.ctme.q8Stats.min,
+                    max: this.ctme.q8Stats.max,
+                    median: this.ctme.q8Stats.median
+                },
+                {
+                    mean: this.ctme.q9Stats.mean,
+                    min: this.ctme.q9Stats.min,
+                    max: this.ctme.q9Stats.max,
+                    median: this.ctme.q9Stats.median
+                },
+                {
+                    mean: this.ctme.q10Stats.mean,
+                    min: this.ctme.q10Stats.min,
+                    max: this.ctme.q10Stats.max,
+                    median: this.ctme.q10Stats.median
+                },
+                {
+                    mean: this.ctme.q11Stats.mean,
+                    min: this.ctme.q11Stats.min,
+                    max: this.ctme.q11Stats.max,
+                    median: this.ctme.q11Stats.median
+                }
+            ]
         }
     };
 }
@@ -348,6 +423,7 @@ interface Result {
     SEDoH: ModelResult;
     NESTcc: ModelResult;
     NLP: ModelResult;
+    CTME: ModelResult;
 };
 
 interface ModelResult {

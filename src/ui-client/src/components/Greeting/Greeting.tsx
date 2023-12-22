@@ -28,7 +28,7 @@ export default class Greeting extends React.PureComponent<Props> {
         const c = this.className;
         const { user } = this.props;
         const newUser = this.isNewUser();
-        let greetingText = `Hi ${user.answers.user_fname}! Welcome to the CD2H Maturity Model survey tool!`;
+        let greetingText = `Hi ${user.answers.user_fname}! Welcome to the Integrated Informatics Maturity Assessment Tool (IIMAT)!`;
         let buttonText = 'Get Started';
         let buttonFunc = this.handleGetStartedClick;
 
@@ -49,7 +49,7 @@ export default class Greeting extends React.PureComponent<Props> {
                         <div className={`${c}-main-text`}>
                             <div>
                                <span>
-                                   The CD2H Maturity Model survey tool is designed to help CTSAs better understand their levels of 
+                                   The Integrated Informatics Maturity Assessment Tool (IIMAT) is designed to help CTSAs better understand their levels of 
                                    informatics maturity and how they compare to others. All data entered is private and will not be 
                                    shared with other CTSAs. When you're done, you can 
                                 </span>

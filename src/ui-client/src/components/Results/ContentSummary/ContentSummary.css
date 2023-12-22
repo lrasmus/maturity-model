@@ -4,13 +4,13 @@
     margin-top: -15px;
 }
 
-.riosm-summary-total-submissions {
+.riosm-summary-total-submissions, .edw4r-summary-total-submissions {
     font-size: 16px;
     margin-top: 15px;
 }
 
 /* Scale */
-.riosm-summary-scale {
+.riosm-summary-scale, .edw4r-summary-scale {
     background-color: white;
     border: 1px solid rgb(230,230,230);
     border-radius: 8px;
@@ -20,23 +20,31 @@
     width: 520px;
 }
 
-.riosm-summary-scale-key > div,
-.riosm-summary-scale-value > div {
-    display: inline-block;
-    width: 100px;
+.edw4r-summary-scale {
+    width: 620px;
 }
 
-.riosm-summary-scale-key {
+.riosm-summary-scale-key > div,
+.riosm-summary-scale-value > div,
+.edw4r-summary-scale-key > div,
+.edw4r-summary-scale-value > div {
+    display: inline-block;
+    width: 100px;
+    vertical-align: top;
+}
+
+.riosm-summary-scale-key, .edw4r-summary-scale-key {
     color: rgb(150,150,150);
     margin-top: -2px;
     text-transform: uppercase;
 }
 
-.riosm-summary-scale-value {
+.riosm-summary-scale-value, .edw4r-summary-scale-value {
     color: rgb(50,50,50);
 }
 
-.riosm-summary-scale-value > div {
+.riosm-summary-scale-value > div,
+.edw4r-summary-scale-value > div {
     font-weight: 700;
 }
 
@@ -46,11 +54,9 @@
 .riosm-summary-scale-value > div:nth-child(2) {
     color: rgb(231, 177, 0);
 }
-
 .riosm-summary-scale-value > div:nth-child(3) {
     color: rgb(155, 190, 0);
 }
-
 .riosm-summary-scale-value > div:nth-child(4) {
     color: rgb(144, 206, 0);
 }
@@ -58,8 +64,28 @@
     color: rgb(0, 190, 0);
 }
 
+.edw4r-summary-scale-value > div:nth-child(1) {
+    color: rgb(0, 0, 0);
+}
+.edw4r-summary-scale-value > div:nth-child(2) {
+    color: rgb(231, 85, 0);
+}
+.edw4r-summary-scale-value > div:nth-child(3) {
+    color: rgb(231, 177, 0);
+}
+.edw4r-summary-scale-value > div:nth-child(4) {
+    color: rgb(155, 190, 0);
+}
+.edw4r-summary-scale-value > div:nth-child(5) {
+    color: rgb(144, 206, 0);
+}
+.edw4r-summary-scale-value > div:nth-child(6) {
+    color: rgb(0, 190, 0);
+}
+
+
 /* Composite Scores */
-.riosm-summary-composite {
+.riosm-summary-composite, .edw4r-summary-composite {
     border-radius: 8px;
     font-size: 1.3rem;
     font-weight: 300;
@@ -70,7 +96,7 @@
     width: 500px;
 }
 
-.riosm-summary-composite-score {
+.riosm-summary-composite-score, .edw4r-summary-composite-score {
     border-bottom: 1px solid rgb(230,230,230);
     color: rgb(100,100,100);
     font-size: 1.3rem;
@@ -80,28 +106,33 @@
     width: 100%;
 }
 
-.riosm-summary-composite-score > span {
+.riosm-summary-composite-score > span,
+.edw4r-summary-composite-score > span {
     float: right;
     margin-top: -4px;
 }
 
-.riosm-summary-composite-score strong {
+.riosm-summary-composite-score strong,
+.edw4r-summary-composite-score strong {
     color: rgb(80,80,80);
     font-size: 1.7rem;
     font-weight: 500;
     margin-right: 8px;
 }
 
-.riosm-summary-composite-score-diff {
+.riosm-summary-composite-score-diff,
+.edw4r-summary-composite-score-diff {
     float: right;
     font-size: 1.0rem;
     margin-top: 10px;
 }
 
-.riosm-summary-composite-score-diff.over {
+.riosm-summary-composite-score-diff.over,
+.edw4r-summary-composite-score-diff.over {
     color: rgb(0, 190, 0);
 }
 
-.riosm-summary-composite-score-diff.under {
+.riosm-summary-composite-score-diff.under,
+.edw4r-summary-composite-score-diff.under {
     color: rgb(231, 85, 0);
 }

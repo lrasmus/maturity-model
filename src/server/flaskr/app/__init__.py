@@ -50,7 +50,7 @@ def is_user():
         sys.stderr.write(f'Error: {ex}\n')
         return server_error()
 
-@app.route("/csrf", methods=['GET'])
+@app.route('/csrf', methods=['GET'])
 def get_csrf():
     try:
         # Credit to https://www.reddit.com/r/flask/comments/oyfeax/comment/h7snrv7/

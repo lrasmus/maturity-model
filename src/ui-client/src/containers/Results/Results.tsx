@@ -16,6 +16,7 @@ import { SEDoH_v2 } from '../../model/Models/SEDoH_v2';
 import { NESTcc } from '../../model/Models/NESTcc';
 import { NLP } from '../../model/Models/NLP';
 import { CTME } from '../../model/Models/CTME';
+import { EDW4R } from '../../model/Models/EDW4R';
 import './Results.css';
 
 interface Props {
@@ -200,6 +201,13 @@ export default class Results extends React.PureComponent<Props,State> {
                         chartDataPoint.push({ model: model, all: all.ctme, user: user.ctme, max: 1.0 });
                         mappedCompletedModels.set(m.shortName, models_completed.ctme);
                         completedModels.push(models_completed.ctme);
+                        break;
+                    };
+                    case EDW4R.name: {
+                        const model = m.shortName + ' (' + models_completed.edw4r.toString() + ')';
+                        chartDataPoint.push({ model: model, all: all.edw4r, user: user.edw4r, max: 1.0 });
+                        mappedCompletedModels.set(m.shortName, models_completed.edw4r);
+                        completedModels.push(models_completed.edw4r);
                         break;
                     };
                 };

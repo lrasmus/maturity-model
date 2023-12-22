@@ -23,6 +23,7 @@ sedoh             = 'sedoh'
 sedoh_v2          = 'sedoh_v2'
 precision_health  = 'precision_health'
 ctme              = 'ctme'
+edw4r             = 'edw4r'
 
 riosm_questions            = 'riosm_questions'
 quintegra_ehmm_questions   = 'quintegra_ehmm_questions'
@@ -33,6 +34,7 @@ precision_health_questions = 'precision_health_questions'
 nestcc_questions           = 'nestcc_questions'
 nlp_questions              = 'nlp_questions'
 ctme_questions             = 'ctme_questions'
+edw4r_questions            = 'edw4r_questions'
 
 # RIOSM categories
 riosm_categories     = 'riosm_categories'
@@ -114,6 +116,51 @@ ctme_q9  = 'system_integration_level'
 ctme_q10  = 'staff_training_and_personnel_mgmt_level'
 ctme_q11  = 'org_maturity_culture_level'
 
+# EDW4R categories
+edw4r_categories         = 'edw4r_categories'
+edw4r_overall            = 'overall'
+edw4r_access_outreach    = 'access_and_outreach'
+edw4r_service_management = 'service_management'
+edw4r_workforce          = 'workforce'
+edw4r_enterprise_it      = 'enterprise_it'
+edw4r_data_governance    = 'data_governance'
+edw4r_metrics            = 'metrics'
+
+# EDW4R questions
+edw4r_acccess_q1  = 'acc_out10'
+edw4r_acccess_q2  = 'acc_out11'
+edw4r_acccess_q3  = 'acc_out12'
+edw4r_acccess_q4  = 'acc_out4'
+edw4r_acccess_q5  = 'acc_out7'
+edw4r_acccess_q6  = 'acc_out8'
+edw4r_service_q7  = 'servman1'
+edw4r_service_q8  = 'servman2'
+edw4r_service_q9  = 'servman3'
+edw4r_service_q10 = 'servman4'
+edw4r_wf_q11      = 'workforce1'
+edw4r_wf_q12      = 'workforce2'
+edw4r_wf_q13      = 'workforce3'
+edw4r_wf_q14      = 'workforce4'
+edw4r_wf_q15      = 'workforce5'
+edw4r_wf_q16      = 'workforce6'
+edw4r_eit_q17     = 'rel_eit1'
+edw4r_eit_q18     = 'rel_eit2'
+edw4r_eit_q19     = 'rel_eit3'
+edw4r_eit_q20     = 'rel_eit4'
+edw4r_eit_q21     = 'rel_eit5'
+edw4r_gov_q22     = 'datagov1'
+edw4r_gov_q23     = 'datagov2'
+edw4r_gov_q24     = 'datagov3'
+edw4r_gov_q25     = 'datagov4'
+edw4r_gov_q26     = 'datagov5'
+edw4r_gov_q27     = 'datagov6'
+edw4r_metrics_q28 = 'metric1'
+edw4r_metrics_q29 = 'metric2'
+edw4r_metrics_q30 = 'metric3'
+edw4r_metrics_q31 = 'metric4'
+edw4r_metrics_q32 = 'metric5'
+edw4r_metrics_q33 = 'metric6'
+
 # Stats
 q1Stats = 'q1Stats'
 q2Stats = 'q2Stats'
@@ -126,6 +173,28 @@ q8Stats = 'q8Stats'
 q9Stats = 'q9Stats'
 q10Stats = 'q10Stats'
 q11Stats = 'q11Stats'
+q12Stats = 'q12Stats'
+q13Stats = 'q13Stats'
+q14Stats = 'q14Stats'
+q15Stats = 'q15Stats'
+q16Stats = 'q16Stats'
+q17Stats = 'q17Stats'
+q18Stats = 'q18Stats'
+q19Stats = 'q19Stats'
+q20Stats = 'q20Stats'
+q21Stats = 'q21Stats'
+q22Stats = 'q22Stats'
+q23Stats = 'q23Stats'
+q24Stats = 'q24Stats'
+q25Stats = 'q25Stats'
+q26Stats = 'q26Stats'
+q27Stats = 'q27Stats'
+q28Stats = 'q28Stats'
+q29Stats = 'q29Stats'
+q30Stats = 'q30Stats'
+q31Stats = 'q31Stats'
+q32Stats = 'q32Stats'
+q33Stats = 'q33Stats'
 
 def get_user_score(user):
 
@@ -149,6 +218,7 @@ def get_user_score(user):
     score[sedoh_v2]          = sum([ float(user[field]) for field in sedoh_v2_fields if user[field].isdigit() ]) / (len(sedoh_v2_fields) * max_seven) if user[SEDOH_V2_COMPLETE] == '2' else None
     score[precision_health]  = sum([ float(user[field]) for field in precision_health_fields if user[field].isdigit() ]) / (len(precision_health_fields) * max_five) if user[PRECISION_HEALTH_COMPLETE] == '2' else None
     score[ctme]              = sum([ float(user[field]) for field in ctme_fields if user[field].isdigit() ]) / (len(ctme_fields) * max_five) if user[CTME_COMPLETE] == '2' else None
+    score[edw4r]             = sum([ float(user[field]) for field in edw4r_fields if user[field].isdigit() ]) / (len(edw4r_fields) * max_five) if user[EDW4R_COMPLETE] == '2' else None
 
     score[riosm_categories] = {}
     score[riosm_categories][overall]              = __get_category_score(user, riosm_fields)
@@ -229,6 +299,51 @@ def get_user_score(user):
     score[ctme_questions][ctme_q10]   = float(user[CTME_Q10]) if user[CTME_Q10].isdigit() else None if user[CTME_COMPLETE] == '2' else None
     score[ctme_questions][ctme_q11]   = float(user[CTME_Q11]) if user[CTME_Q11].isdigit() else None if user[CTME_COMPLETE] == '2' else None
 
+    score[edw4r_categories] = {}
+    score[edw4r_categories][edw4r_overall]              = __get_category_score(user, edw4r_fields)
+    score[edw4r_categories][edw4r_access_outreach]      = __get_category_score(user, edw4r_access_outreach_fields)
+    score[edw4r_categories][edw4r_service_management]   = __get_category_score(user, edw4r_service_management_fields)
+    score[edw4r_categories][edw4r_workforce]            = __get_category_score(user, edw4r_workforce_fields)
+    score[edw4r_categories][edw4r_enterprise_it]        = __get_category_score(user, edw4r_enterprise_it_fields)
+    score[edw4r_categories][edw4r_data_governance]      = __get_category_score(user, edw4r_data_governance_fields)
+    score[edw4r_categories][edw4r_metrics]              = __get_category_score(user, edw4r_metrics_fields)
+
+    score[edw4r_questions] = {}
+    score[edw4r_questions][edw4r_acccess_q1]              = float(user[EDW4R_ACCCESS_Q1]) if user[EDW4R_ACCCESS_Q1].isdigit() else None if user[EDW4R_COMPLETE] == '2' else None
+    score[edw4r_questions][edw4r_acccess_q2]              = float(user[EDW4R_ACCCESS_Q2]) if user[EDW4R_ACCCESS_Q2].isdigit() else None if user[EDW4R_COMPLETE] == '2' else None
+    score[edw4r_questions][edw4r_acccess_q3]              = float(user[EDW4R_ACCCESS_Q3]) if user[EDW4R_ACCCESS_Q3].isdigit() else None if user[EDW4R_COMPLETE] == '2' else None
+    score[edw4r_questions][edw4r_acccess_q4]              = float(user[EDW4R_ACCCESS_Q4]) if user[EDW4R_ACCCESS_Q4].isdigit() else None if user[EDW4R_COMPLETE] == '2' else None
+    score[edw4r_questions][edw4r_acccess_q5]              = float(user[EDW4R_ACCCESS_Q5]) if user[EDW4R_ACCCESS_Q5].isdigit() else None if user[EDW4R_COMPLETE] == '2' else None
+    score[edw4r_questions][edw4r_acccess_q6]              = float(user[EDW4R_ACCCESS_Q6]) if user[EDW4R_ACCCESS_Q6].isdigit() else None if user[EDW4R_COMPLETE] == '2' else None
+    score[edw4r_questions][edw4r_service_q7]              = float(user[EDW4R_SERVICE_Q7]) if user[EDW4R_SERVICE_Q7].isdigit() else None if user[EDW4R_COMPLETE] == '2' else None
+    score[edw4r_questions][edw4r_service_q8]              = float(user[EDW4R_SERVICE_Q8]) if user[EDW4R_SERVICE_Q8].isdigit() else None if user[EDW4R_COMPLETE] == '2' else None
+    score[edw4r_questions][edw4r_service_q9]              = float(user[EDW4R_SERVICE_Q9]) if user[EDW4R_SERVICE_Q9].isdigit() else None if user[EDW4R_COMPLETE] == '2' else None
+    score[edw4r_questions][edw4r_service_q10]             = float(user[EDW4R_SERVICE_Q10]) if user[EDW4R_SERVICE_Q10].isdigit() else None if user[EDW4R_COMPLETE] == '2' else None
+    score[edw4r_questions][edw4r_wf_q11]                  = float(user[EDW4R_WF_Q11]) if user[EDW4R_WF_Q11].isdigit() else None if user[EDW4R_COMPLETE] == '2' else None
+    score[edw4r_questions][edw4r_wf_q12]                  = float(user[EDW4R_WF_Q12]) if user[EDW4R_WF_Q12].isdigit() else None if user[EDW4R_COMPLETE] == '2' else None
+    score[edw4r_questions][edw4r_wf_q13]                  = float(user[EDW4R_WF_Q13]) if user[EDW4R_WF_Q13].isdigit() else None if user[EDW4R_COMPLETE] == '2' else None
+    score[edw4r_questions][edw4r_wf_q14]                  = float(user[EDW4R_WF_Q14]) if user[EDW4R_WF_Q14].isdigit() else None if user[EDW4R_COMPLETE] == '2' else None
+    score[edw4r_questions][edw4r_wf_q15]                  = float(user[EDW4R_WF_Q15]) if user[EDW4R_WF_Q15].isdigit() else None if user[EDW4R_COMPLETE] == '2' else None
+    score[edw4r_questions][edw4r_wf_q16]                  = float(user[EDW4R_WF_Q16]) if user[EDW4R_WF_Q16].isdigit() else None if user[EDW4R_COMPLETE] == '2' else None
+    score[edw4r_questions][edw4r_eit_q17]                 = float(user[EDW4R_EIT_Q17]) if user[EDW4R_EIT_Q17].isdigit() else None if user[EDW4R_COMPLETE] == '2' else None
+    score[edw4r_questions][edw4r_eit_q18]                 = float(user[EDW4R_EIT_Q18]) if user[EDW4R_EIT_Q18].isdigit() else None if user[EDW4R_COMPLETE] == '2' else None
+    score[edw4r_questions][edw4r_eit_q19]                 = float(user[EDW4R_EIT_Q19]) if user[EDW4R_EIT_Q19].isdigit() else None if user[EDW4R_COMPLETE] == '2' else None
+    score[edw4r_questions][edw4r_eit_q20]                 = float(user[EDW4R_EIT_Q20]) if user[EDW4R_EIT_Q20].isdigit() else None if user[EDW4R_COMPLETE] == '2' else None
+    score[edw4r_questions][edw4r_eit_q21]                 = float(user[EDW4R_EIT_Q21]) if user[EDW4R_EIT_Q21].isdigit() else None if user[EDW4R_COMPLETE] == '2' else None
+    score[edw4r_questions][edw4r_gov_q22]                 = float(user[EDW4R_GOV_Q22]) if user[EDW4R_GOV_Q22].isdigit() else None if user[EDW4R_COMPLETE] == '2' else None
+    score[edw4r_questions][edw4r_gov_q23]                 = float(user[EDW4R_GOV_Q23]) if user[EDW4R_GOV_Q23].isdigit() else None if user[EDW4R_COMPLETE] == '2' else None
+    score[edw4r_questions][edw4r_gov_q24]                 = float(user[EDW4R_GOV_Q24]) if user[EDW4R_GOV_Q24].isdigit() else None if user[EDW4R_COMPLETE] == '2' else None
+    score[edw4r_questions][edw4r_gov_q25]                 = float(user[EDW4R_GOV_Q25]) if user[EDW4R_GOV_Q25].isdigit() else None if user[EDW4R_COMPLETE] == '2' else None
+    score[edw4r_questions][edw4r_gov_q26]                 = float(user[EDW4R_GOV_Q26]) if user[EDW4R_GOV_Q26].isdigit() else None if user[EDW4R_COMPLETE] == '2' else None
+    score[edw4r_questions][edw4r_gov_q27]                 = float(user[EDW4R_GOV_Q27]) if user[EDW4R_GOV_Q27].isdigit() else None if user[EDW4R_COMPLETE] == '2' else None
+    score[edw4r_questions][edw4r_metrics_q28]             = float(user[EDW4R_METRICS_Q28]) if user[EDW4R_METRICS_Q28].isdigit() else None if user[EDW4R_COMPLETE] == '2' else None
+    score[edw4r_questions][edw4r_metrics_q29]             = float(user[EDW4R_METRICS_Q29]) if user[EDW4R_METRICS_Q29].isdigit() else None if user[EDW4R_COMPLETE] == '2' else None
+    score[edw4r_questions][edw4r_metrics_q30]             = float(user[EDW4R_METRICS_Q30]) if user[EDW4R_METRICS_Q30].isdigit() else None if user[EDW4R_COMPLETE] == '2' else None
+    score[edw4r_questions][edw4r_metrics_q31]             = float(user[EDW4R_METRICS_Q31]) if user[EDW4R_METRICS_Q31].isdigit() else None if user[EDW4R_COMPLETE] == '2' else None
+    score[edw4r_questions][edw4r_metrics_q32]             = float(user[EDW4R_METRICS_Q32]) if user[EDW4R_METRICS_Q32].isdigit() else None if user[EDW4R_COMPLETE] == '2' else None
+    score[edw4r_questions][edw4r_metrics_q33]             = float(user[EDW4R_METRICS_Q33]) if user[EDW4R_METRICS_Q33].isdigit() else None if user[EDW4R_COMPLETE] == '2' else None
+
+
     score[models_completed] = {}
     score[models_completed][riosm]             = 1 if user[RIOSM_COMPLETE] == '2' else None
     score[models_completed][quintegra_ehmm]    = 1 if user[QUINTEGRA_EHMM_COMPELTE] == '2' else None
@@ -245,6 +360,7 @@ def get_user_score(user):
     score[models_completed][sedoh_v2]          = 1 if user[SEDOH_V2_COMPLETE] == '2' else None
     score[models_completed][precision_health]  = 1 if user[PRECISION_HEALTH_COMPLETE] == '2' else None
     score[models_completed][ctme]              = 1 if user[CTME_COMPLETE] == '2' else None
+    score[models_completed][edw4r]             = 1 if user[EDW4R_COMPLETE] == '2' else None
 
     return score
 
@@ -264,6 +380,8 @@ def aggregate(all):
     sedoh_v2_question_scores = [ v[sedoh_v2_questions] for v in all_scores ]
     precision_health_question_scores = [ v[precision_health_questions] for v in all_scores ]
     ctme_question_scores = [ v[ctme_questions] for v in all_scores ]
+    edw4r_scores = [ v[edw4r_categories] for v in all_scores ]
+    edw4r_question_scores = [ v[edw4r_questions] for v in all_scores ]
 
     agg_score[riosm]             = __get_aggregate_score(all_scores, riosm)
     agg_score[quintegra_ehmm]    = __get_aggregate_score(all_scores, quintegra_ehmm)
@@ -279,6 +397,7 @@ def aggregate(all):
     agg_score[sedoh_v2]          = __get_aggregate_score(all_scores, sedoh_v2)
     agg_score[precision_health]  = __get_aggregate_score(all_scores, precision_health)
     agg_score[ctme]              = __get_aggregate_score(all_scores, ctme)
+    agg_score[edw4r]             = __get_aggregate_score(all_scores, edw4r)
 
     agg_score[riosm_categories] = {}
     agg_score[riosm_categories][overall]              = __get_aggregate_score(riosm_scores, overall)
@@ -359,6 +478,50 @@ def aggregate(all):
     agg_score[ctme_questions][q10Stats]  = __get_aggregate_stats(ctme_question_scores, ctme_q10)
     agg_score[ctme_questions][q11Stats]  = __get_aggregate_stats(ctme_question_scores, ctme_q11)
 
+    agg_score[edw4r_categories] = {}
+    agg_score[edw4r_categories][edw4r_overall]            = __get_aggregate_score(edw4r_scores, edw4r_overall)
+    agg_score[edw4r_categories][edw4r_access_outreach]    = __get_aggregate_score(edw4r_scores, edw4r_access_outreach)
+    agg_score[edw4r_categories][edw4r_service_management] = __get_aggregate_score(edw4r_scores, edw4r_service_management)
+    agg_score[edw4r_categories][edw4r_workforce]          = __get_aggregate_score(edw4r_scores, edw4r_workforce)
+    agg_score[edw4r_categories][edw4r_enterprise_it]      = __get_aggregate_score(edw4r_scores, edw4r_enterprise_it)
+    agg_score[edw4r_categories][edw4r_data_governance]    = __get_aggregate_score(edw4r_scores, edw4r_data_governance)
+    agg_score[edw4r_categories][edw4r_metrics]            = __get_aggregate_score(edw4r_scores, edw4r_metrics)
+
+    agg_score[edw4r_questions] = {}
+    agg_score[edw4r_questions][q1Stats]             = __get_aggregate_stats(edw4r_question_scores, edw4r_acccess_q1)
+    agg_score[edw4r_questions][q2Stats]             = __get_aggregate_stats(edw4r_question_scores, edw4r_acccess_q2)
+    agg_score[edw4r_questions][q3Stats]             = __get_aggregate_stats(edw4r_question_scores, edw4r_acccess_q3)
+    agg_score[edw4r_questions][q4Stats]             = __get_aggregate_stats(edw4r_question_scores, edw4r_acccess_q4)
+    agg_score[edw4r_questions][q5Stats]             = __get_aggregate_stats(edw4r_question_scores, edw4r_acccess_q5)
+    agg_score[edw4r_questions][q6Stats]             = __get_aggregate_stats(edw4r_question_scores, edw4r_acccess_q6)
+    agg_score[edw4r_questions][q7Stats]             = __get_aggregate_stats(edw4r_question_scores, edw4r_service_q7)
+    agg_score[edw4r_questions][q8Stats]             = __get_aggregate_stats(edw4r_question_scores, edw4r_service_q8)
+    agg_score[edw4r_questions][q9Stats]             = __get_aggregate_stats(edw4r_question_scores, edw4r_service_q9)
+    agg_score[edw4r_questions][q10Stats]            = __get_aggregate_stats(edw4r_question_scores, edw4r_service_q10)
+    agg_score[edw4r_questions][q11Stats]            = __get_aggregate_stats(edw4r_question_scores, edw4r_wf_q11)
+    agg_score[edw4r_questions][q12Stats]            = __get_aggregate_stats(edw4r_question_scores, edw4r_wf_q12)
+    agg_score[edw4r_questions][q13Stats]            = __get_aggregate_stats(edw4r_question_scores, edw4r_wf_q13)
+    agg_score[edw4r_questions][q14Stats]            = __get_aggregate_stats(edw4r_question_scores, edw4r_wf_q14)
+    agg_score[edw4r_questions][q15Stats]            = __get_aggregate_stats(edw4r_question_scores, edw4r_wf_q15)
+    agg_score[edw4r_questions][q16Stats]            = __get_aggregate_stats(edw4r_question_scores, edw4r_wf_q16)
+    agg_score[edw4r_questions][q17Stats]            = __get_aggregate_stats(edw4r_question_scores, edw4r_eit_q17)
+    agg_score[edw4r_questions][q18Stats]            = __get_aggregate_stats(edw4r_question_scores, edw4r_eit_q18)
+    agg_score[edw4r_questions][q19Stats]            = __get_aggregate_stats(edw4r_question_scores, edw4r_eit_q19)
+    agg_score[edw4r_questions][q20Stats]            = __get_aggregate_stats(edw4r_question_scores, edw4r_eit_q20)
+    agg_score[edw4r_questions][q21Stats]            = __get_aggregate_stats(edw4r_question_scores, edw4r_eit_q21)
+    agg_score[edw4r_questions][q22Stats]            = __get_aggregate_stats(edw4r_question_scores, edw4r_gov_q22)
+    agg_score[edw4r_questions][q23Stats]            = __get_aggregate_stats(edw4r_question_scores, edw4r_gov_q23)
+    agg_score[edw4r_questions][q24Stats]            = __get_aggregate_stats(edw4r_question_scores, edw4r_gov_q24)
+    agg_score[edw4r_questions][q25Stats]            = __get_aggregate_stats(edw4r_question_scores, edw4r_gov_q25)
+    agg_score[edw4r_questions][q26Stats]            = __get_aggregate_stats(edw4r_question_scores, edw4r_gov_q26)
+    agg_score[edw4r_questions][q27Stats]            = __get_aggregate_stats(edw4r_question_scores, edw4r_gov_q27)
+    agg_score[edw4r_questions][q28Stats]            = __get_aggregate_stats(edw4r_question_scores, edw4r_metrics_q28)
+    agg_score[edw4r_questions][q29Stats]            = __get_aggregate_stats(edw4r_question_scores, edw4r_metrics_q29)
+    agg_score[edw4r_questions][q30Stats]            = __get_aggregate_stats(edw4r_question_scores, edw4r_metrics_q30)
+    agg_score[edw4r_questions][q31Stats]            = __get_aggregate_stats(edw4r_question_scores, edw4r_metrics_q31)
+    agg_score[edw4r_questions][q32Stats]            = __get_aggregate_stats(edw4r_question_scores, edw4r_metrics_q32)
+    agg_score[edw4r_questions][q33Stats]            = __get_aggregate_stats(edw4r_question_scores, edw4r_metrics_q33)
+
     agg_score[models_completed] = {}
     agg_score[models_completed][riosm]             = __get_aggregate_completed_models(all_models_completed, riosm)
     agg_score[models_completed][quintegra_ehmm]    = __get_aggregate_completed_models(all_models_completed, quintegra_ehmm)
@@ -373,7 +536,8 @@ def aggregate(all):
     agg_score[models_completed][sedoh]             = __get_aggregate_completed_models(all_models_completed, sedoh)
     agg_score[models_completed][sedoh_v2]          = __get_aggregate_completed_models(all_models_completed, sedoh_v2)
     agg_score[models_completed][precision_health]  = __get_aggregate_completed_models(all_models_completed, precision_health)
-    agg_score[models_completed][ctme]               = __get_aggregate_completed_models(all_models_completed, ctme)
+    agg_score[models_completed][ctme]              = __get_aggregate_completed_models(all_models_completed, ctme)
+    agg_score[models_completed][edw4r]             = __get_aggregate_completed_models(all_models_completed, edw4r)
 
     return agg_score, len(all_scores)
 

@@ -131,7 +131,43 @@ export const defaultUserState = (): UserState => {
             'reporting_analytics_dashboard_level': '',
             'system_integration_level': '',
             'staff_training_and_personnel_mgmt_level': '',
-            'org_maturity_culture_level': ''
+            'org_maturity_culture_level': '',
+
+            // RIOSM
+            'edw4r_maturity_index_complete': FormState.NotStarted,
+            'acc_out10': '',
+            'acc_out11': '',
+            'acc_out12': '',
+            'acc_out4': '', 
+            'acc_out7': '', 
+            'acc_out8': '',
+            'servman1': '',
+            'servman2': '',
+            'servman3': '',
+            'servman4': '',
+            'workforce1': '',
+            'workforce2': '',
+            'workforce3': '',
+            'workforce4': '',
+            'workforce5': '',
+            'workforce6': '',
+            'rel_eit1': '',
+            'rel_eit2': '',
+            'rel_eit3': '',
+            'rel_eit4': '',
+            'rel_eit5': '',
+            'datagov1': '',
+            'datagov2': '',
+            'datagov3': '',
+            'datagov4': '',
+            'datagov5': '',
+            'datagov6': '',
+            'metric1': '',
+            'metric2': '',
+            'metric3': '',
+            'metric4': '',
+            'metric5': '',
+            'metric6': '',
         },
         answersLoadState: AnswerScoreLoadState.NotLoaded,
         email: '',
@@ -167,7 +203,17 @@ const userDefaultScore = (): BaseAnswerScore => {
             data_and_software_sharing: 0,
             research_informatics: 0
         },
-        ctme: 0
+        ctme: 0,
+        edw4r: 0,
+        edw4r_categories: {
+            overall: 0,
+            access_and_outreach: 0,
+            service_management: 0,
+            workforce: 0,
+            enterprise_it: 0,
+            data_governance: 0,
+            metrics: 0
+        },
     };
 }
 
@@ -188,6 +234,7 @@ const allDefaultScore = (): AllAnswerScore => {
         sedoh_v2: 0,
         precision_health: 0,
         ctme: 0,
+        edw4r: 0,
         riosm_categories: {
             overall: 0,
             governance: 0,
@@ -267,6 +314,50 @@ const allDefaultScore = (): AllAnswerScore => {
             q10Stats: { mean: 0, min: 0, max: 0, median: 0 },
             q11Stats: { mean: 0, min: 0, max: 0, median: 0 }
         },
+        edw4r_categories: {
+            overall: 0,
+            access_and_outreach: 0,
+            service_management: 0,
+            workforce: 0,
+            enterprise_it: 0,
+            data_governance: 0,
+            metrics: 0
+        },
+        edw4r_questions: {
+            q1Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q2Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q3Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q4Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q5Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q6Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q7Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q8Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q9Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q10Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q11Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q12Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q13Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q14Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q15Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q16Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q17Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q18Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q19Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q20Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q21Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q22Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q23Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q24Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q25Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q26Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q27Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q28Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q29Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q30Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q31Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q32Stats: { mean: 0, min: 0, max: 0, median: 0 },
+            q33Stats: { mean: 0, min: 0, max: 0, median: 0 }
+        },
         models_completed: {
             riosm: 0,
             quintegra_ehmm: 0,
@@ -281,7 +372,8 @@ const allDefaultScore = (): AllAnswerScore => {
             sedoh: 0,
             sedoh_v2: 0,
             precision_health: 0,
-            ctme: 0
+            ctme: 0,
+            edw4r: 0
         }
     };
 }

@@ -22,6 +22,13 @@ import {
     riosmDataAndSoftware, 
     riosmResearchInformatics,
     ctmeFields,
+    edw4rFields,
+    edw4rAccessOutreach,
+    edw4rServiceManagement,
+    edw4rWorkforce,
+    edw4rEnterpriseIT,
+    edw4rDataGovernance,
+    edw4rMetrics
 } from "../model/User";
 
 let serverState: UserAnswers = {};
@@ -151,6 +158,7 @@ export const calculateUserScores = (user: UserAnswers): BaseAnswerScore => {
     const maxEight = 8.0;
     const valElseZero = (val:string) => val !== '' ? parseFloat(val) : 0;
     const riosmSum = sum(validate(riosmFields.map(f => user[f])));
+    const edw4rSum = sum(validate(edw4rFields.map(f => user[f])));
     
     return {
         riosm             : riosmSum / (riosmFields.length * maxFive),
@@ -173,7 +181,17 @@ export const calculateUserScores = (user: UserAnswers): BaseAnswerScore => {
             data_and_software_sharing : sum(validate(riosmDataAndSoftware.map(f => user[f]))) / riosmDataAndSoftware.length,
             research_informatics      : sum(validate(riosmResearchInformatics.map(f => user[f]))) / riosmResearchInformatics.length
         },
-        ctme             : sum(validate(ctmeFields.map(f => user[f]))) / (ctmeFields.length * maxFive)
+        ctme             : sum(validate(ctmeFields.map(f => user[f]))) / (ctmeFields.length * maxFive),
+        edw4r            : edw4rSum / (edw4rFields.length * maxFive),
+        edw4r_categories  : {
+            overall                 : riosmSum / riosmFields.length,
+            access_and_outreach     : sum(validate(edw4rAccessOutreach.map(f => user[f]))) / edw4rAccessOutreach.length,
+            service_management      : sum(validate(edw4rServiceManagement.map(f => user[f]))) / edw4rServiceManagement.length,
+            workforce               : sum(validate(edw4rWorkforce.map(f => user[f]))) / edw4rWorkforce.length,
+            enterprise_it           : sum(validate(edw4rEnterpriseIT.map(f => user[f]))) / edw4rEnterpriseIT.length,
+            data_governance         : sum(validate(edw4rDataGovernance.map(f => user[f]))) / edw4rDataGovernance.length,
+            metrics                 : sum(validate(edw4rMetrics.map(f => user[f]))) / edw4rMetrics.length
+        },
     };
 };
 

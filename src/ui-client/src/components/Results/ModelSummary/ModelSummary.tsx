@@ -61,6 +61,9 @@ export default class ModelSummary extends React.PureComponent<Props> {
         if (modelName === this.res.CTME.name) {
             return this.res.CTME.questions[index];
         };
+        if (modelName === this.res.EDW4R.name) {
+            return this.res.EDW4R.questions[index];
+        };
         return {mean: 0, min: 0, max: 0, median: 0};
     }
 
@@ -74,6 +77,7 @@ export default class ModelSummary extends React.PureComponent<Props> {
     private nestcc = this.results.all.nestcc_questions;
     private nlp = this.results.all.nlp_questions;
     private ctme = this.results.all.ctme_questions;
+    private edw4r = this.results.all.edw4r_questions;
 
     private res: Result = {
         RIOSM: {
@@ -450,6 +454,209 @@ export default class ModelSummary extends React.PureComponent<Props> {
                     median: this.ctme.q11Stats.median
                 }
             ]
+        },
+        EDW4R: {
+            name: 'EDW4R',
+            questions: [
+                {
+                    mean: this.edw4r.q1Stats.mean,
+                    min: this.edw4r.q1Stats.min,
+                    max: this.edw4r.q1Stats.max,
+                    median: this.edw4r.q1Stats.median
+                },
+                {
+                    mean: this.edw4r.q2Stats.mean,
+                    min: this.edw4r.q2Stats.min,
+                    max: this.edw4r.q2Stats.max,
+                    median: this.edw4r.q2Stats.median
+                },
+                {
+                    mean: this.edw4r.q3Stats.mean,
+                    min: this.edw4r.q3Stats.min,
+                    max: this.edw4r.q3Stats.max,
+                    median: this.edw4r.q3Stats.median
+                },
+                {
+                    mean: this.edw4r.q4Stats.mean,
+                    min: this.edw4r.q4Stats.min,
+                    max: this.edw4r.q4Stats.max,
+                    median: this.edw4r.q4Stats.median
+                },
+                {
+                    mean: this.edw4r.q5Stats.mean,
+                    min: this.edw4r.q5Stats.min,
+                    max: this.edw4r.q5Stats.max,
+                    median: this.edw4r.q5Stats.median
+                },
+                {
+                    mean: this.edw4r.q6Stats.mean,
+                    min: this.edw4r.q6Stats.min,
+                    max: this.edw4r.q6Stats.max,
+                    median: this.edw4r.q6Stats.median
+                },
+                {
+                    mean: this.edw4r.q7Stats.mean,
+                    min: this.edw4r.q7Stats.min,
+                    max: this.edw4r.q7Stats.max,
+                    median: this.edw4r.q7Stats.median
+                },
+                {
+                    mean: this.edw4r.q8Stats.mean,
+                    min: this.edw4r.q8Stats.min,
+                    max: this.edw4r.q8Stats.max,
+                    median: this.edw4r.q8Stats.median
+                },
+                {
+                    mean: this.edw4r.q9Stats.mean,
+                    min: this.edw4r.q9Stats.min,
+                    max: this.edw4r.q9Stats.max,
+                    median: this.edw4r.q9Stats.median
+                },
+                {
+                    mean: this.edw4r.q10Stats.mean,
+                    min: this.edw4r.q10Stats.min,
+                    max: this.edw4r.q10Stats.max,
+                    median: this.edw4r.q10Stats.median
+                },
+                {
+                    mean: this.edw4r.q11Stats.mean,
+                    min: this.edw4r.q11Stats.min,
+                    max: this.edw4r.q11Stats.max,
+                    median: this.edw4r.q11Stats.median
+                },
+                {
+                    mean: this.edw4r.q12Stats.mean,
+                    min: this.edw4r.q12Stats.min,
+                    max: this.edw4r.q12Stats.max,
+                    median: this.edw4r.q12Stats.median
+                },
+                {
+                    mean: this.edw4r.q13Stats.mean,
+                    min: this.edw4r.q13Stats.min,
+                    max: this.edw4r.q13Stats.max,
+                    median: this.edw4r.q13Stats.median
+                },
+                {
+                    mean: this.edw4r.q14Stats.mean,
+                    min: this.edw4r.q14Stats.min,
+                    max: this.edw4r.q14Stats.max,
+                    median: this.edw4r.q14Stats.median
+                },
+                {
+                    mean: this.edw4r.q15Stats.mean,
+                    min: this.edw4r.q15Stats.min,
+                    max: this.edw4r.q15Stats.max,
+                    median: this.edw4r.q15Stats.median
+                },
+                {
+                    mean: this.edw4r.q16Stats.mean,
+                    min: this.edw4r.q16Stats.min,
+                    max: this.edw4r.q16Stats.max,
+                    median: this.edw4r.q16Stats.median
+                },
+                {
+                    mean: this.edw4r.q17Stats.mean,
+                    min: this.edw4r.q17Stats.min,
+                    max: this.edw4r.q17Stats.max,
+                    median: this.edw4r.q17Stats.median
+                },
+                {
+                    mean: this.edw4r.q18Stats.mean,
+                    min: this.edw4r.q18Stats.min,
+                    max: this.edw4r.q18Stats.max,
+                    median: this.edw4r.q18Stats.median
+                },
+                {
+                    mean: this.edw4r.q19Stats.mean,
+                    min: this.edw4r.q19Stats.min,
+                    max: this.edw4r.q19Stats.max,
+                    median: this.edw4r.q19Stats.median
+                },
+                {
+                    mean: this.edw4r.q20Stats.mean,
+                    min: this.edw4r.q20Stats.min,
+                    max: this.edw4r.q20Stats.max,
+                    median: this.edw4r.q20Stats.median
+                },
+                {
+                    mean: this.edw4r.q21Stats.mean,
+                    min: this.edw4r.q21Stats.min,
+                    max: this.edw4r.q21Stats.max,
+                    median: this.edw4r.q21Stats.median
+                },
+                {
+                    mean: this.edw4r.q22Stats.mean,
+                    min: this.edw4r.q22Stats.min,
+                    max: this.edw4r.q22Stats.max,
+                    median: this.edw4r.q22Stats.median
+                },
+                {
+                    mean: this.edw4r.q23Stats.mean,
+                    min: this.edw4r.q23Stats.min,
+                    max: this.edw4r.q23Stats.max,
+                    median: this.edw4r.q23Stats.median
+                },
+                {
+                    mean: this.edw4r.q24Stats.mean,
+                    min: this.edw4r.q24Stats.min,
+                    max: this.edw4r.q24Stats.max,
+                    median: this.edw4r.q24Stats.median
+                },
+                {
+                    mean: this.edw4r.q25Stats.mean,
+                    min: this.edw4r.q25Stats.min,
+                    max: this.edw4r.q25Stats.max,
+                    median: this.edw4r.q25Stats.median
+                },
+                {
+                    mean: this.edw4r.q26Stats.mean,
+                    min: this.edw4r.q26Stats.min,
+                    max: this.edw4r.q26Stats.max,
+                    median: this.edw4r.q26Stats.median
+                },
+                {
+                    mean: this.edw4r.q27Stats.mean,
+                    min: this.edw4r.q27Stats.min,
+                    max: this.edw4r.q27Stats.max,
+                    median: this.edw4r.q27Stats.median
+                },
+                {
+                    mean: this.edw4r.q28Stats.mean,
+                    min: this.edw4r.q28Stats.min,
+                    max: this.edw4r.q28Stats.max,
+                    median: this.edw4r.q28Stats.median
+                },
+                {
+                    mean: this.edw4r.q29Stats.mean,
+                    min: this.edw4r.q29Stats.min,
+                    max: this.edw4r.q29Stats.max,
+                    median: this.edw4r.q29Stats.median
+                },
+                {
+                    mean: this.edw4r.q30Stats.mean,
+                    min: this.edw4r.q30Stats.min,
+                    max: this.edw4r.q30Stats.max,
+                    median: this.edw4r.q30Stats.median
+                },
+                {
+                    mean: this.edw4r.q31Stats.mean,
+                    min: this.edw4r.q31Stats.min,
+                    max: this.edw4r.q31Stats.max,
+                    median: this.edw4r.q31Stats.median
+                },
+                {
+                    mean: this.edw4r.q32Stats.mean,
+                    min: this.edw4r.q32Stats.min,
+                    max: this.edw4r.q32Stats.max,
+                    median: this.edw4r.q32Stats.median
+                },
+                {
+                    mean: this.edw4r.q33Stats.mean,
+                    min: this.edw4r.q33Stats.min,
+                    max: this.edw4r.q33Stats.max,
+                    median: this.edw4r.q33Stats.median
+                }
+            ]
         }
     };
 }
@@ -464,6 +671,7 @@ interface Result {
     NESTcc: ModelResult;
     NLP: ModelResult;
     CTME: ModelResult;
+    EDW4R: ModelResult;
 };
 
 interface ModelResult {

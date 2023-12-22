@@ -17,11 +17,12 @@ import { HAAM } from '../model/Models/HAAM';
 import { NESTcc } from '../model/Models/NESTcc';
 import { NLP } from '../model/Models/NLP';
 import { CTME } from '../model/Models/CTME';
+import { EDW4R } from '../model/Models/EDW4R';
 
 
 export const defaultModelState = (): ModelsState => {
     return {
-        all: [ RIOSM, PrecisionHealth, HAAM, SEDoH_v2, CTME ]
+        all: [ RIOSM, PrecisionHealth, HAAM, SEDoH_v2, CTME, EDW4R ]
         
         // removed models
         // all: [ HIMSS_EMRAM, IDC_Healthcare_IT, NEHTA_IMM, NESTcc, NLP, HIMSS_CCMM, SEDoH, Forrester, EPRMM, Quintegra_eHMM ]

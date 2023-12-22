@@ -15,6 +15,7 @@ export interface ModelQuestion {
     answerField: AnswerField;
     options: ModelQuestionOption[];
     text: string | JSX.Element;
+    footer?: string | JSX.Element;
     zeroIndex?: boolean;
 }
 

@@ -12,18 +12,20 @@ import { PrecisionHealth } from '../model/Models/PrecisionHealth';
 import { Forrester } from '../model/Models/Forrester';
 import { EPRMM } from '../model/Models/EPRMM';
 import { SEDoH } from '../model/Models/SEDoH';
+import { SEDoH_v2 } from '../model/Models/SEDoH_v2';
 import { HAAM } from '../model/Models/HAAM';
 import { NESTcc } from '../model/Models/NESTcc';
 import { NLP } from '../model/Models/NLP';
 import { CTME } from '../model/Models/CTME';
+import { EDW4R } from '../model/Models/EDW4R';
 
 
 export const defaultModelState = (): ModelsState => {
     return {
-        all: [ RIOSM, PrecisionHealth, HAAM, SEDoH, CTME ]
+        all: [ RIOSM, PrecisionHealth, HAAM, SEDoH_v2, CTME, EDW4R ]
         
         // removed models
-        // all: [ HIMSS_EMRAM, IDC_Healthcare_IT, NEHTA_IMM, NESTcc, NLP, HIMSS_CCMM, Forrester, EPRMM, Quintegra_eHMM ]
+        // all: [ HIMSS_EMRAM, IDC_Healthcare_IT, NEHTA_IMM, NESTcc, NLP, HIMSS_CCMM, SEDoH, Forrester, EPRMM, Quintegra_eHMM ]
     };
 };
 

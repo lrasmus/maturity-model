@@ -81,6 +81,14 @@ export type AnswerField =
     'sedoh_q4'                         |
     'sedoh_q5'                         |
 
+    // SEDoH v2
+    'social_and_environmental_determinants_of_health_complete'                   |
+    'sedoh_q1_v2'                      |
+    'sedoh_q2_v2'                      |
+    'sedoh_q3_v2'                      |
+    'sedoh_q4_v2'                      |
+    'sedoh_q5_v2'                      |
+
     // NESTcc
     'nestcc_complete'                  |
     'nestcc_q1'                        |
@@ -110,7 +118,44 @@ export type AnswerField =
     'reporting_analytics_dashboard_level'  |
     'system_integration_level'         |
     'staff_training_and_personnel_mgmt_level' |
-    'org_maturity_culture_level'
+    'org_maturity_culture_level'       |
+
+
+    // EDW4R
+    'edw4r_maturity_index_complete'                   | 
+    'acc_out10'              |
+    'acc_out11'              |
+    'acc_out12'              |
+    'acc_out4'    | 
+    'acc_out7'            | 
+    'acc_out8'        |
+    'servman1' |
+    'servman2'                    |
+    'servman3'       |
+    'servman4'     |
+    'workforce1'     |
+    'workforce2'     |
+    'workforce3'     |
+    'workforce4'     |
+    'workforce5'     |
+    'workforce6'     |
+    'rel_eit1'     |
+    'rel_eit2'     |
+    'rel_eit3'     |
+    'rel_eit4'     |
+    'rel_eit5'     |
+    'datagov1'     |
+    'datagov2'     |
+    'datagov3'     |
+    'datagov4'     |
+    'datagov5'     |
+    'datagov6'     |
+    'metric1'     |
+    'metric2'     |
+    'metric3'     |
+    'metric4'     |
+    'metric5'     |
+    'metric6'
 
 
 export interface BaseUserAnswers {
@@ -208,6 +253,17 @@ export const sedohFields: AnswerField[] = [
     SEDOH_Q1, SEDOH_Q2, SEDOH_Q3, SEDOH_Q4, SEDOH_Q5
 ];
 
+// SEDoH v2
+export const SEDOH_V2_Q1: AnswerField = 'sedoh_q1_v2';
+export const SEDOH_V2_Q2: AnswerField = 'sedoh_q2_v2';
+export const SEDOH_V2_Q3: AnswerField = 'sedoh_q3_v2';
+export const SEDOH_V2_Q4: AnswerField = 'sedoh_q4_v2';
+export const SEDOH_V2_Q5: AnswerField = 'sedoh_q5_v2';
+
+export const sedoh_v2Fields: AnswerField[] = [
+    SEDOH_V2_Q1, SEDOH_V2_Q2, SEDOH_V2_Q3, SEDOH_V2_Q4, SEDOH_V2_Q5
+];
+
 // Precision Health
 export const PRECISION_HEALTH_Q1: AnswerField = 'precision_health_q1';
 export const PRECISION_HEALTH_Q2: AnswerField = 'precision_health_q2';
@@ -266,3 +322,71 @@ export const ctmeFields: AnswerField[] = [
     CTME_Q6, CTME_Q7, CTME_Q8, CTME_Q9, CTME_Q10,
     CTME_Q11
 ];
+
+// EDW4R
+export const EDW4R_ACCCESS_Q1: AnswerField = 'acc_out10'
+export const EDW4R_ACCCESS_Q2: AnswerField = 'acc_out11'
+export const EDW4R_ACCCESS_Q3: AnswerField = 'acc_out12'
+export const EDW4R_ACCCESS_Q4: AnswerField = 'acc_out4'
+export const EDW4R_ACCCESS_Q5: AnswerField = 'acc_out7'
+export const EDW4R_ACCCESS_Q6: AnswerField = 'acc_out8'
+export const EDW4R_SERVICE_Q7: AnswerField = 'servman1'
+export const EDW4R_SERVICE_Q8: AnswerField = 'servman2'
+export const EDW4R_SERVICE_Q9: AnswerField = 'servman3'
+export const EDW4R_SERVICE_Q10: AnswerField = 'servman4'
+export const EDW4R_WF_Q11: AnswerField = 'workforce1'
+export const EDW4R_WF_Q12: AnswerField = 'workforce2'
+export const EDW4R_WF_Q13: AnswerField = 'workforce3'
+export const EDW4R_WF_Q14: AnswerField = 'workforce4'
+export const EDW4R_WF_Q15: AnswerField = 'workforce5'
+export const EDW4R_WF_Q16: AnswerField = 'workforce6'
+export const EDW4R_EIT_Q17: AnswerField = 'rel_eit1'
+export const EDW4R_EIT_Q18: AnswerField = 'rel_eit2'
+export const EDW4R_EIT_Q19: AnswerField = 'rel_eit3'
+export const EDW4R_EIT_Q20: AnswerField = 'rel_eit4'
+export const EDW4R_EIT_Q21: AnswerField = 'rel_eit5'
+export const EDW4R_GOV_Q22: AnswerField = 'datagov1'
+export const EDW4R_GOV_Q23: AnswerField = 'datagov2'
+export const EDW4R_GOV_Q24: AnswerField = 'datagov3'
+export const EDW4R_GOV_Q25: AnswerField = 'datagov4'
+export const EDW4R_GOV_Q26: AnswerField = 'datagov5'
+export const EDW4R_GOV_Q27: AnswerField = 'datagov6'
+export const EDW4R_METRICS_Q28: AnswerField = 'metric1'
+export const EDW4R_METRICS_Q29: AnswerField = 'metric2'
+export const EDW4R_METRICS_Q30: AnswerField = 'metric3'
+export const EDW4R_METRICS_Q31: AnswerField = 'metric4'
+export const EDW4R_METRICS_Q32: AnswerField = 'metric5'
+export const EDW4R_METRICS_Q33: AnswerField = 'metric6'
+
+export const edw4rFields: AnswerField[] = [ 
+    EDW4R_ACCCESS_Q1, EDW4R_ACCCESS_Q2, EDW4R_ACCCESS_Q3, EDW4R_ACCCESS_Q4, EDW4R_ACCCESS_Q5, EDW4R_ACCCESS_Q6,
+    EDW4R_SERVICE_Q7, EDW4R_SERVICE_Q8, EDW4R_SERVICE_Q9, EDW4R_SERVICE_Q10,
+    EDW4R_WF_Q11, EDW4R_WF_Q12, EDW4R_WF_Q13, EDW4R_WF_Q14, EDW4R_WF_Q15, EDW4R_WF_Q16,
+    EDW4R_EIT_Q17, EDW4R_EIT_Q18, EDW4R_EIT_Q19, EDW4R_EIT_Q20, EDW4R_EIT_Q21,
+    EDW4R_GOV_Q22, EDW4R_GOV_Q23, EDW4R_GOV_Q24, EDW4R_GOV_Q25, EDW4R_GOV_Q26, EDW4R_GOV_Q27,
+    EDW4R_METRICS_Q28, EDW4R_METRICS_Q29, EDW4R_METRICS_Q30, EDW4R_METRICS_Q31, EDW4R_METRICS_Q32, EDW4R_METRICS_Q33
+]
+
+export const edw4rAccessOutreach: AnswerField[] = [
+    EDW4R_ACCCESS_Q1, EDW4R_ACCCESS_Q2, EDW4R_ACCCESS_Q3, EDW4R_ACCCESS_Q4, EDW4R_ACCCESS_Q5, EDW4R_ACCCESS_Q6
+]
+
+export const edw4rServiceManagement: AnswerField[] = [
+    EDW4R_SERVICE_Q7, EDW4R_SERVICE_Q8, EDW4R_SERVICE_Q9, EDW4R_SERVICE_Q10,
+]
+
+export const edw4rWorkforce: AnswerField[] = [
+    EDW4R_WF_Q11, EDW4R_WF_Q12, EDW4R_WF_Q13, EDW4R_WF_Q14, EDW4R_WF_Q15, EDW4R_WF_Q16,
+]
+
+export const edw4rEnterpriseIT: AnswerField[] = [
+    EDW4R_EIT_Q17, EDW4R_EIT_Q18, EDW4R_EIT_Q19, EDW4R_EIT_Q20, EDW4R_EIT_Q21,
+]
+
+export const edw4rDataGovernance: AnswerField[] = [
+    EDW4R_GOV_Q22, EDW4R_GOV_Q23, EDW4R_GOV_Q24, EDW4R_GOV_Q25, EDW4R_GOV_Q26, EDW4R_GOV_Q27,
+]
+
+export const edw4rMetrics: AnswerField[] = [
+    EDW4R_METRICS_Q28, EDW4R_METRICS_Q29, EDW4R_METRICS_Q30, EDW4R_METRICS_Q31, EDW4R_METRICS_Q32, EDW4R_METRICS_Q33
+]

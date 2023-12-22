@@ -76,7 +76,7 @@ export default class Summary extends React.PureComponent<Props,State> {
                     maturity continuum first proposed in the <a href='https://en.wikipedia.org/wiki/Capability_Maturity_Model' target='_'>Capability Maturity Model</a>.
                 </span>
             );
-        };
+        }
         return undefined;
     };
 }

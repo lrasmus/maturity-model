@@ -12,9 +12,11 @@ import { PrecisionHealth } from '../../model/Models/PrecisionHealth';
 import { Quintegra_eHMM } from '../../model/Models/Quintegra_eHMM';
 import { HAAM } from '../../model/Models/HAAM';
 import { SEDoH } from '../../model/Models/SEDoH';
+import { SEDoH_v2 } from '../../model/Models/SEDoH_v2';
 import { NESTcc } from '../../model/Models/NESTcc';
 import { NLP } from '../../model/Models/NLP';
 import { CTME } from '../../model/Models/CTME';
+import { EDW4R } from '../../model/Models/EDW4R';
 import './Results.css';
 
 interface Props {
@@ -173,6 +175,13 @@ export default class Results extends React.PureComponent<Props,State> {
                         completedModels.push(models_completed.sedoh);
                         break;
                     };
+                    case SEDoH_v2.name: {
+                        const model = m.shortName + ' (' + models_completed.sedoh_v2.toString() + ')';
+                        chartDataPoint.push({ model: model, all: all.sedoh_v2, user: user.sedoh_v2, max: 1.0 });
+                        mappedCompletedModels.set(m.shortName, models_completed.sedoh_v2);
+                        completedModels.push(models_completed.sedoh_v2);
+                        break;
+                    };
                     case NESTcc.name: {
                         const model = m.shortName + ' (' + models_completed.nestcc.toString() + ')';
                         chartDataPoint.push({ model: model, all: all.nestcc, user: user.nestcc, max: 1.0 });
@@ -192,6 +201,13 @@ export default class Results extends React.PureComponent<Props,State> {
                         chartDataPoint.push({ model: model, all: all.ctme, user: user.ctme, max: 1.0 });
                         mappedCompletedModels.set(m.shortName, models_completed.ctme);
                         completedModels.push(models_completed.ctme);
+                        break;
+                    };
+                    case EDW4R.name: {
+                        const model = m.shortName + ' (' + models_completed.edw4r.toString() + ')';
+                        chartDataPoint.push({ model: model, all: all.edw4r, user: user.edw4r, max: 1.0 });
+                        mappedCompletedModels.set(m.shortName, models_completed.edw4r);
+                        completedModels.push(models_completed.edw4r);
                         break;
                     };
                 };

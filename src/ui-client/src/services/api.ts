@@ -184,7 +184,7 @@ export const calculateUserScores = (user: UserAnswers): BaseAnswerScore => {
         ctme             : sum(validate(ctmeFields.map(f => user[f]))) / (ctmeFields.length * maxFive),
         edw4r            : edw4rSum / (edw4rFields.length * maxFive),
         edw4r_categories  : {
-            overall                 : riosmSum / riosmFields.length,
+            overall                 : edw4rSum / edw4rFields.length,
             access_and_outreach     : sum(validate(edw4rAccessOutreach.map(f => user[f]))) / edw4rAccessOutreach.length,
             service_management      : sum(validate(edw4rServiceManagement.map(f => user[f]))) / edw4rServiceManagement.length,
             workforce               : sum(validate(edw4rWorkforce.map(f => user[f]))) / edw4rWorkforce.length,

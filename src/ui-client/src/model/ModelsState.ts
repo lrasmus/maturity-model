@@ -2,7 +2,7 @@ import { UserAnswers, AnswerField } from "./User"
 
 export interface BaseModel {
     completeField: AnswerField;
-    description: string;
+    description: string | JSX.Element;
     name: string;
     shortName: string;
     questions: ModelQuestion[];
@@ -21,6 +21,7 @@ export interface ModelQuestion {
 export interface ModelQuestionOption {
     text: string | JSX.Element | JSX.Element[];
     value: LikertStringOneToFive | LikertStringOneToSeven | HIMSS_EMRAMZeroToSeven | HAAMZeroToEight;
+    skipSave?: boolean;
 }
 
 export interface ModelsState {

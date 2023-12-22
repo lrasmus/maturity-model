@@ -14,6 +14,7 @@ import { HAAM } from '../../model/Models/HAAM';
 import { SEDoH } from '../../model/Models/SEDoH';
 import { NESTcc } from '../../model/Models/NESTcc';
 import { NLP } from '../../model/Models/NLP';
+import { CTME } from '../../model/Models/CTME';
 import './Results.css';
 
 interface Props {
@@ -184,6 +185,13 @@ export default class Results extends React.PureComponent<Props,State> {
                         chartDataPoint.push({ model: model, all: all.nlp, user: user.nlp, max: 1.0 });
                         mappedCompletedModels.set(m.shortName, models_completed.nlp);
                         completedModels.push(models_completed.nlp);
+                        break;
+                    };
+                    case CTME.name: {
+                        const model = m.shortName + ' (' + models_completed.ctme.toString() + ')';
+                        chartDataPoint.push({ model: model, all: all.ctme, user: user.ctme, max: 1.0 });
+                        mappedCompletedModels.set(m.shortName, models_completed.ctme);
+                        completedModels.push(models_completed.ctme);
                         break;
                     };
                 };

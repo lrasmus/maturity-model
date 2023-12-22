@@ -11,8 +11,8 @@ export default class LeftFooter extends React.PureComponent<Props> {
         return (
             <div className={c}>
                 <p className={`${c}-shoutout`}>
-                    <span>Developed by UW Medicine Research IT, the CD2H, and <a href="https://www.nucats.northwestern.edu/">NUCATS</a>.
-                    </span>
+                    <span>Hosted by: The Northwestern University Clinical and Translational Sciences Institute (<a href="https://www.nucats.northwestern.edu/">NUCATS</a>)</span><br/>
+                    <span>Originally developed by: UW Medicine Research IT and the CD2H</span>
                 </p>
             </div>
         );

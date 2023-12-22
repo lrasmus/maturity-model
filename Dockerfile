@@ -32,6 +32,7 @@ WORKDIR /app/server
 # Create a venv and install requirements
 RUN python -m venv venv
 # Need to re-activate venv for each command (https://pythonspeed.com/articles/activate-virtualenv-dockerfile/)
+RUN . /app/server/venv/bin/activate && python -m pip install --upgrade pip
 RUN . /app/server/venv/bin/activate && python -m pip install -r requirements.txt
 RUN . /app/server/venv/bin/activate && python -m pip uninstall dataclasses -y
 

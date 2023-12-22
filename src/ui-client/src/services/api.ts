@@ -20,6 +20,7 @@ import {
     riosmGovernance, 
     riosmDataAndSoftware, 
     riosmResearchInformatics,
+    ctmeFields,
 } from "../model/User";
 
 let serverState: UserAnswers = {};
@@ -42,11 +43,9 @@ export const getApplicationConfig = async (): Promise<AppConfigState> => {
  * returns data for user from REDCap.
  */
 export const login = async (email: string, entryCode: string): Promise<UserAnswers> => {
-    const resp = await Axios.get('/api/user', {
-        params: {
-            email,
-            entry_code: entryCode
-        }
+    const resp = await Axios.post('/api/login', {
+        email,
+        entry_code: entryCode
     });
     const dto = resp.data.user as UserAnswersDTO;
     const user = dtoToUser(dto);
@@ -74,11 +73,9 @@ export const signUp = async (newUserForm: NewUserFormState): Promise<number> => 
  * Request current scores for the user.
  */
 export const getUserAndAggregateScores = async (user: UserState): Promise<AnswerScores> => {
-    const resp = await Axios.get('/api/scores', {
-        params: {
-            email: user.email,
-            entry_code: user.entryCode
-        }
+    const resp = await Axios.post('/api/scores', {
+        email: user.email,
+        entry_code: user.entryCode
     });
 
     return {
@@ -173,7 +170,8 @@ export const calculateUserScores = (user: UserAnswers): BaseAnswerScore => {
             governance                : sum(validate(riosmGovernance.map(f => user[f]))) / riosmGovernance.length,
             data_and_software_sharing : sum(validate(riosmDataAndSoftware.map(f => user[f]))) / riosmDataAndSoftware.length,
             research_informatics      : sum(validate(riosmResearchInformatics.map(f => user[f]))) / riosmResearchInformatics.length
-        }    
+        },
+        ctme             : sum(validate(ctmeFields.map(f => user[f]))) / (ctmeFields.length * maxFive)
     };
 };
 
